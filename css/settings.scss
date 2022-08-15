@@ -1,4 +1,6 @@
-#settings{
-  padding-top: 100px;
-  text-align: center;
+
+.settings{
+  &__title{
+    text-align: center;
+  }
 }

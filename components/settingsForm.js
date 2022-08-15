@@ -12,8 +12,7 @@ export class SettingsForm extends LitElement {
     }
     render() {
         return html`
-            <form class="form">
-                <p class="form__title">Регистрация</p>
+            <form class="form">         
                 ${tmpl_input({name: "email", class: "form__input form__input_email",placeholder: "mail@yandex.ru", type: 'email'})}
                 ${tmpl_input({name: "display_name", class: "form__input form__input_login",placeholder: "Логин", type: 'text'})}
                 ${tmpl_input({name: "name", class: "form__input form__input_name",placeholder: "Имя", type: 'text'})}
@@ -22,14 +21,20 @@ export class SettingsForm extends LitElement {
                 ${tmpl_input({name:"password", class: "form__input form__input_password",placeholder: "******", type: 'text'})}
                 ${tmpl_input({name:"password", class: "form__input form__input_password-again",placeholder: "******", type: 'text'})}
                 <div class="form__buttons">
-                    ${tmpl_button({
-            class: "form__button form__button_button",
-            text: "Зарегестрироваться",
-            href: 'registration.html'
-        })}
+         
                     ${tmpl_button({
             class: "form__button form__button_link",
-            text: "Войти",
+            text: "Изменить данные",
+            click:this.click,
+            href:'settings.html'
+        })}         ${tmpl_button({
+            class: "form__button form__button_link",
+            text: "Изменить пароль",
+            click:this.click,
+            href:'settings.html'
+        })}         ${tmpl_button({
+            class: "form__button form__button_link form__button_link_exit",
+            text: "Выйти",
             click:this.click,
             href:'settings.html'
         })}

@@ -7,7 +7,7 @@ const avatarText="Имя"
 const avatar=require ('../static/images/avatar.jpeg')
 const forma=new SettingsForm()
 const settings=html`
-    <div class="settings__titlle">
+    <div class="settings__title">
         ${tmpl_image({
             path: avatar,
             class: "image image_settings",
@@ -25,6 +25,5 @@ const settings=html`
 </div>
 `
 const element=document.getElementById('settings')
-console.log(settings)
 
 render(settings,element)

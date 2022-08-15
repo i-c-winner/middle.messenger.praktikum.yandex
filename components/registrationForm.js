@@ -7,9 +7,6 @@ export class RegistrationForm extends LitElement {
     constructor() {
         super();
     }
-    click(){
-
-    }
     render() {
         return html`
             <form class="form">
@@ -31,7 +28,7 @@ export class RegistrationForm extends LitElement {
             class: "form__button form__button_link",
             text: "Войти",
             click:this.click,
-            href:'settings.html'
+            href:'main.html'
         })}
                 </div>
             </form>`

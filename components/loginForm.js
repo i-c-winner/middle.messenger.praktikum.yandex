@@ -8,9 +8,7 @@ export class LoginForm extends LitElement {
 
     }
 
-click(){
-        window.open("http://localhost:3000/registration.html")
-}
+
     render() {
         return html`
             <form class="form">
@@ -21,13 +19,12 @@ click(){
                     ${tmpl_button({
                         class: "form__button form__button_button",
                         text: "Авторизоваться",
-                        href: 'pages/registration.html'
+                        href: 'pages/main.html'
                     })}
                     ${tmpl_button({
                         class: "form__button form__button_link",
                         text: "Нет аккаунта?",
-                        click:this.click,
-                        href:''
+                        href:'pages/registration.html'
                     })}
                 </div>
             </form>

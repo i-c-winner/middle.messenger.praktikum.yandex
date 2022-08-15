@@ -115,6 +115,9 @@
       &_link{
         background: none;
         color: #3369f3;
+        &_exit{
+          color: red
+        }
       }
   }
 }
