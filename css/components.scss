@@ -1,0 +1,91 @@
+.form{
+  width: 25%;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: white;
+  box-shadow: 5px 5px 10px grey;
+  border-radius: 5px;
+
+  &__title{
+    margin: 0 0 25px 0;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  &__input{
+    position: relative;
+    padding: 10px 0;
+    border: 1px solid black;
+
+    &_login{
+      margin-bottom: 25px;
+      &::before{
+background-color: white;
+padding: 2px;
+content: 'Логин';
+        position: absolute;
+        top: -11px;
+        left: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+    &_password{
+      &::before{
+        background-color: white;
+        padding: 2px;
+        content: 'Пароль';
+        position: absolute;
+        top: -11px;
+        left: 30px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+
+  }
+  &__input-text{
+    margin-left: 10px;
+    background-color: white;
+    &:focus{
+      outline: 0;
+      outline-offset: 0;
+
+    }
+  }
+  &__buttons{
+    margin-top: 25px;
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    a{
+      text-decoration: none;
+      text-align: center;
+        }
+
+  }
+
+
+    &__button{
+      border: none;
+      border-radius: 5px;
+      padding: 5px 0;
+      width: 50%;
+      margin: 0 auto;
+
+
+      &:last-child{
+        margin-top: 10px;
+
+      }
+      &_button{
+        background-color: #3369f3;
+        color: white;
+      }
+      &_link{
+        background: none;
+        color: #3369f3;
+      }
+  }
+}

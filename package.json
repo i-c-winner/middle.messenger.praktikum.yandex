@@ -4,6 +4,7 @@
   "description": "practical work yandex-praktikum",
   "main": "index.js",
   "scripts": {
+    "dev": "parcel index.html pages/registration.html -p 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,9 +22,8 @@
   },
   "homepage": "https://github.com/i-c-winner/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0",
+    "lit": "^2.3.0",
     "parcel": "^2.7.0"
-  },
-  "dependencies": {
-    "lit": "^2.3.0"
   }
 }
