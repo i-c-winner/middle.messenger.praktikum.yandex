@@ -4,7 +4,7 @@
   "description": "practical work yandex-praktikum",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel index.html pages/registration.html -p 3000",
+    "dev": "parcel index.html pages/registration.html pages/settings.html -p 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -3,7 +3,7 @@ import tmpl_input from "../tamplates/tmpl_input";
 import tmpl_button from "../tamplates/tmpl_button";
 
 
-export class RegistrationForm extends LitElement {
+export class SettingsForm extends LitElement {
     constructor() {
         super();
     }
@@ -37,4 +37,4 @@ export class RegistrationForm extends LitElement {
             </form>`
     }
 }
-customElements.define('registration-form', RegistrationForm);
+customElements.define('settings-form', SettingsForm);
