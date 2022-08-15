@@ -1,3 +1,14 @@
+@mixin input{
+
+  background-color: white;
+  padding: 2px;
+  position: absolute;
+  top: -11px;
+  left: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .form{
   width: 25%;
   margin: 0 auto;
@@ -17,33 +28,51 @@
     position: relative;
     padding: 10px 0;
     border: 1px solid black;
+    margin-bottom: 25px;
 
+    &_email{
+     &::before{
+       @include input;
+       content: 'Почта';
+     }
+   }
     &_login{
-      margin-bottom: 25px;
       &::before{
-background-color: white;
-padding: 2px;
-content: 'Логин';
-        position: absolute;
-        top: -11px;
-        left: 30px;
-        padding-left: 10px;
-        padding-right: 10px;
+        @include input;
+        content: 'Логин';
+      }
+    }
+
+    &_name{
+      &::before{
+        @include input;
+        content: 'Имя';
+      }
+    }
+    &_second-name{
+      &::before{
+        @include input;
+        content: 'Фамилия';
+      }
+    }
+    &_phone{
+      &::before{
+        @include input;
+        content: 'Телефон';
       }
     }
     &_password{
       &::before{
-        background-color: white;
-        padding: 2px;
+        @include input;
         content: 'Пароль';
-        position: absolute;
-        top: -11px;
-        left: 30px;
-        padding-left: 10px;
-        padding-right: 10px;
       }
     }
-
+    &_password-again{
+      &::before{
+        @include input;
+        content: 'Пароль (еще раз)';
+      }
+    }
   }
   &__input-text{
     margin-left: 10px;

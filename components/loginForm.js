@@ -15,7 +15,7 @@ click(){
         return html`
             <form class="form">
                 <p class="form__title">Вход</p>
-                           ${tmpl_input({name: "login", class: "form__input form__input_login",placeholder: "Имя", type: 'text'})}
+                ${tmpl_input({name: "display_name", class: "form__input form__input_login",placeholder: "Логин", type: 'text'})}
                 ${tmpl_input({name:"password", class: "form__input form__input_password",placeholder: "Пароль", type: 'text'})}
                 <div class="form__buttons">
                     ${tmpl_button({
