@@ -55,6 +55,12 @@
         content: 'Фамилия';
       }
     }
+    &_second-name{
+      &::before{
+        @include input;
+        content: 'Имя и фамилия';
+      }
+    }
     &_phone{
       &::before{
         @include input;
