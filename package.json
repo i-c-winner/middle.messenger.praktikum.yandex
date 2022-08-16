@@ -13,8 +13,8 @@
     "node": ">= 16"
   },
   "scripts": {
-    "build": "parcel build index.html pages/registration.html ",
-    "dev": "parcel index.html pages/registration.html pages/settings.html pages/main.html pages/error404.html pages/error5__.html -p 3001",
+    "build": "parcel build index.html 'pages/*.html' --no-scope-hoist ",
+    "dev": "parcel index.html pages/*.html -p 3001",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
