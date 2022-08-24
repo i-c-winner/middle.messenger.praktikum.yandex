@@ -1,3 +1,5 @@
+import EventBus from "./EventBus";
+
 type Props={
     tagName:string,
     classes: [...string[]],
@@ -9,14 +11,27 @@ type Props={
 class  AbstractComponent{
   private readonly props:Props
   element: HTMLElement;
+  EVENTS={
+    INIT: 'component-init',
+    MOUNT: 'component-did-mount',
+    RENDER: 'component-did-render',
+    UPDATE: 'component-did-uodate'
+  }
+
 
   constructor(props:Props) {
     this.props = this.getProps.bind(this)(props)
     this._init()
+    this.componentDidMount()
+
+  }
+  componentDidMount(){
     this._setClasses()
     this._render()
   }
+  componentDipUpdate(){
 
+  }
   changeClasses(classesForDelete:[...string[]], classesForAdd:[...string[]]) {
     if (classesForDelete.length!==0){
       classesForDelete.map(element=>{

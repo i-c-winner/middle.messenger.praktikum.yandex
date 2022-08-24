@@ -5,11 +5,10 @@ import {ChatsBox} from "../components/chats-box";
 const chatsBox=new ChatsBox({
   classes:['proba'],
   tagName: 'div',
-  text: 'this. is chack'
+  text: 'this is chack'
 })
 const element=html`
 <div style="display: flex; flex-flow: column ">
-    <button onClick={click}>click</button>
     ${tmpl_button({
     text: "Страница с ошибкой 404",
     color: "red",
