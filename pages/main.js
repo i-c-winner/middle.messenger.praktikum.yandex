@@ -8,8 +8,7 @@ const chatsBox=new ChatsBox({
   text: 'this is chack'
 })
 function click(){
-  console.log('click')
-  chatsBox.changeClasses([], ['new proba', 'as'])
+  chatsBox.changeClasses([], ['new-proba', 'as'])
 }
 const button=document.createElement('button')
 button.addEventListener('click', click)

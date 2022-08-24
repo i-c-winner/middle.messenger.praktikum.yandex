@@ -4,10 +4,12 @@
     "lib": [
       "dom",
       "es5",
+      "es6",
+      "es2016.array.include",
       "scripthost",
       "es2015.proxy"
     ]
   },
   "include": ["components", "pages"],
-  "exclude": ["node_modules", "**/*.spec.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
   }

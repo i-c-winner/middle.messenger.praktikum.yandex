@@ -23,7 +23,8 @@ class  AbstractComponent{
 
   constructor(props:Props) {
     this.eventBus=new EventBus()
-    this.props = this.getProps.bind(this)(props)
+    this.props=props
+    this.props = this.getProps(props)
     this._registerEvents()
     this.eventBus.emit(this.EVENTS.INIT)
 
@@ -37,11 +38,13 @@ class  AbstractComponent{
 
   }
   componentDidMount(){
-    this._setClasses()
     this.eventBus.emit(this.EVENTS.RENDER)
   }
   componentDipUpdate(){
 
+  }
+  _setProps=(newProps)=> {
+    Object.assign(this.props, newProps)
   }
   changeClasses(classesForDelete:[...string[]], classesForAdd:[...string[]]) {
     if (classesForDelete.length!==0){
@@ -49,7 +52,13 @@ class  AbstractComponent{
         this.props.classes= this.props.classes.filter(elem=>elem!==element)
       })
     }
-    if (classesForAdd.length!==0)  classesForAdd.map(elem=>this.props.classes.push(elem))
+    if (classesForAdd.length!==0) {
+      classesForAdd.map(elem=>{
+        if (!this.props.classes.includes(elem)) this.props.classes.push(elem)
+      })
+    }
+    this._setProps(this.props)
+
   }
   _init() {
     this.element=document.createElement(this.props.tagName)
@@ -65,11 +74,14 @@ class  AbstractComponent{
   render(){}
 
   _render(){
+    this._setClasses()
     this.element.innerText=this.props.text
     this.render()
   }
-  getProps(props:Props){
-    return new Proxy(props, {
+  getProps(){
+    const eventBus=this.eventBus
+    const EVENTS=this.EVENTS
+    return new Proxy(this.props, {
       get(target:Props, prop:string){
         if (!target[prop]){
           throw new Error('Попытка получить несуществующее свойство экземпляра')
@@ -79,7 +91,13 @@ class  AbstractComponent{
       },
       set(target:Props, prop: string, value:never){
         target[prop]=value
+        eventBus.emit(EVENTS.UPDATE)
         return true
+      },
+      defineProperty(target: Props, prop: string | symbol, attributes: PropertyDescriptor): boolean {
+        if (!target[prop]) {
+          return false
+        } delete target[prop]
       }
     })
 
