@@ -1,0 +1,42 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "practical work yandex-praktikum",
+  "targets": {
+    "modern": {
+      "engines": {
+        "browsers": ">= 50%"
+      }
+    }
+  },
+  "engines": {
+    "node": ">= 16"
+  },
+  "scripts": {
+    "build": "parcel build index.html 'pages/*.html' --no-scope-hoist ",
+    "dev": "parcel index.html pages/*.html -p 3001",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i-c-winner/middle.messenger.praktikum.yandex.git"
+  },
+  "keywords": [
+    "yandex",
+    "praktikum"
+  ],
+  "author": "Belousov Dmitriy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i-c-winner/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/i-c-winner/middle.messenger.praktikum.yandex#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0",
+    "lit": "^2.3.0"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "parcel": "^2.7.0"
+  }
+}
