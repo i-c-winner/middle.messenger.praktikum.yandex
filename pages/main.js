@@ -7,6 +7,12 @@ const chatsBox=new ChatsBox({
   tagName: 'div',
   text: 'this is chack'
 })
+function click(){
+  console.log('click')
+  chatsBox.changeClasses([], ['new proba', 'as'])
+}
+const button=document.createElement('button')
+button.addEventListener('click', click)
 const element=html`
 <div style="display: flex; flex-flow: column ">
     ${tmpl_button({
@@ -27,6 +33,6 @@ const element=html`
 </div> `
 
 const container=document.getElementById('root')
-
+document.body.appendChild(button)
 render(element, container)
 

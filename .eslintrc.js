@@ -19,5 +19,6 @@ module.exports = {
   "rules": {
     "indent": ['error', 2],
     "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/ban-types": "off"
   }
 }

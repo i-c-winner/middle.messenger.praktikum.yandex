@@ -1,5 +1,6 @@
 import EventBus from "./EventBus";
 
+
 type Props={
     tagName:string,
     classes: [...string[]],
@@ -11,23 +12,33 @@ type Props={
 class  AbstractComponent{
   private readonly props:Props
   element: HTMLElement;
+
   EVENTS={
     INIT: 'component-init',
     MOUNT: 'component-did-mount',
     RENDER: 'component-did-render',
-    UPDATE: 'component-did-uodate'
+    UPDATE: 'component-did-update'
   }
-
+  eventBus=new EventBus()
 
   constructor(props:Props) {
+    this.eventBus=new EventBus()
     this.props = this.getProps.bind(this)(props)
-    this._init()
-    this.componentDidMount()
+    this._registerEvents()
+    this.eventBus.emit(this.EVENTS.INIT)
+
+
+  }
+  _registerEvents(){
+    this.eventBus.on(this.EVENTS.INIT, this._init.bind(this))
+    this.eventBus.on(this.EVENTS.MOUNT, this.componentDidMount.bind(this))
+    this.eventBus.on(this.EVENTS.RENDER, this._render.bind(this))
+    this.eventBus.on(this.EVENTS.UPDATE, this.componentDidMount.bind(this))
 
   }
   componentDidMount(){
     this._setClasses()
-    this._render()
+    this.eventBus.emit(this.EVENTS.RENDER)
   }
   componentDipUpdate(){
 
@@ -42,6 +53,7 @@ class  AbstractComponent{
   }
   _init() {
     this.element=document.createElement(this.props.tagName)
+    this.eventBus.emit(this.EVENTS.MOUNT)
   }
   _setClasses(){
     this.props.classes.map(style=>{
