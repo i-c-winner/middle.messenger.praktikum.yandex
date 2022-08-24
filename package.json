@@ -13,6 +13,8 @@
     "node": ">= 16"
   },
   "scripts": {
+    "eslint": "eslint  .",
+    "eslintfix": "eslint --fix . ",
     "build": "parcel build index.html 'pages/*.html' --no-scope-hoist ",
     "dev": "parcel index.html pages/*.html -p 3001",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -33,7 +35,11 @@
   "homepage": "https://github.com/i-c-winner/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.7.0",
-    "lit": "^2.3.0"
+    "@typescript-eslint/eslint-plugin": "^5.34.0",
+    "@typescript-eslint/parser": "^5.34.0",
+    "eslint": "^8.22.0",
+    "lit": "^2.3.0",
+    "typescript": "^4.7.4"
   },
   "dependencies": {
     "express": "^4.18.1",
