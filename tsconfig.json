@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "preserveConstEnums": true,
+    "lib": [
+      "dom",
+      "es5",
+      "scripthost",
+      "es2015.proxy"
+    ]
+  },
+  "include": ["components", "pages"],
+  "exclude": ["node_modules", "**/*.spec.ts"],
+  }

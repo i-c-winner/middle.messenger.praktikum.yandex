@@ -143,28 +143,3 @@
     }
   }
 }
-
-.image {
-  &_settings {
-    width: 150px;
-    padding: 20px;
-    border-radius: 50%;
-  }
-}
-
-.error {
-  &__text {
-    font-size: 50px;
-
-    &_number {
-      font-size: 150px;
-      font-weight: bold;
-      margin: 0;
-    }
-
-    &_link {
-      text-decoration: none;
-      font-size: 25px;
-    }
-  }
-}
