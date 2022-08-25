@@ -5,8 +5,7 @@ class ChatsBox extends AbstractComponent{
     super(props);
   }
   render(){
-    const box=document.body
-    box.append(this.element)
+    return this.element
   }
 
 }

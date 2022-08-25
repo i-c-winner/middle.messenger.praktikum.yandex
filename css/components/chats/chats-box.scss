@@ -3,3 +3,9 @@
 @import "chats";
 @import "info";
 @import "message";
+
+.chats-box {
+  width: 15%;
+  height: 100vh;
+  border: 1px solid red;
+}

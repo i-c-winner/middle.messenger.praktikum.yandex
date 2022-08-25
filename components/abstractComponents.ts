@@ -84,7 +84,7 @@ class  AbstractComponent{
     return new Proxy(this.props, {
       get(target:Props, prop:string){
         if (!target[prop]){
-          throw new Error('Попытка получить несуществующее свойство экземпляра')
+          console.info('Попытка получить несуществующее свойство экземпляра')
         }
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
