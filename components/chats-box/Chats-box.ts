@@ -1,5 +1,5 @@
 
-import AbstractComponent from '../abstractComponents'
+import AbstractComponent from '../AbstractComponents'
 class ChatsBox extends AbstractComponent{
   constructor(props) {
     super(props);

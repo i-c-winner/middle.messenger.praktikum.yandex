@@ -1,5 +1,4 @@
 import {html, render} from "lit";
-import tmpl_button from "../tamplates/tmpl_button";
 import {ChatsBox} from "../components/chats-box";
 
 const chatsBox=new ChatsBox({
