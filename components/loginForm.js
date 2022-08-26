@@ -4,11 +4,7 @@ import tmpl_button from "../tamplates/tmpl_button";
 export class LoginForm extends LitElement {
   constructor(props) {
     super(props);
-
-
   }
-
-
   render() {
     return html`
             <form class="form">
@@ -27,8 +23,7 @@ export class LoginForm extends LitElement {
     href:'pages/registration.html'
   })}
                 </div>
-            </form>
-       
+            </form>       
     `;
   }
 

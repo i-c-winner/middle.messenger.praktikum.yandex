@@ -1,27 +1,33 @@
 import Chats from "./Chats";
 import AbstractComponent from '../AbstractComponents'
+import {Props} from "../../utils/types";
 
 class ChatsBox extends AbstractComponent{
   private chats: Chats;
+  private myProps:Props
   constructor(props) {
     super(props);
     this.props=props
-
+    this.myProps=props
   }
+
   init(){
-    this.props={
+    console.log(this.props, 'props')
+    this.myProps={
       ...this.props,
-      classes:['chats']
+      classes:['chats'],
+      parentId:'chats-box',
+      id: 'chats',
     }
-    this.chats=new Chats(this.props)
   }
-  getElement(){
-    console.log(this.element.innerText)
-    return this.element
-  }
-  render(){
 
-    return this.element.innerHTML=this.chats.getElement()
+  renderElement(){
+    this.container.appendChild(this.element)
+    this.chats=new Chats(this.myProps)
+  }
+
+  render(){
+    this.renderElement()
   }
 
 }

@@ -1,24 +1,33 @@
 import AbstractComponent from "../AbstractComponents";
-import {html, render} from 'lit'
+import Chat from "./Chat";
+import {Props} from "../../utils/types";
 
 class Chats extends AbstractComponent{
-  container:HTMLElement
+  private chat: Chat;
+  private myProps: Props
   constructor(props) {
     super(props);
     this.props=props
+    this.myProps=props
   }
-  init(){
 
+  init(){
+    console.log(this.props, 'props')
+    this.myProps={
+      ...this.props,
+      classes:['chat'],
+      parentId:'chats',
+      id: 'chat',
+    }
   }
-  getElement(){
-    return this.element.innerText
+
+  renderElement(){
+    this.container.appendChild(this.element)
+    this.chat=new Chat(this.myProps)
   }
 
   render(){
-    const template=html`<p class="pokl">this. is </p>`
-
-    this.element.innerText=   template.strings[0]
-    return this.element
+    this.renderElement()
   }
 }
 

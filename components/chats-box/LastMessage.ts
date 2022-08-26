@@ -1,8 +1,7 @@
 import AbstractComponent from "../AbstractComponents";
-import LastMessage from "./LastMessage";
 import {Props} from "../../utils/types";
 
-class Chat extends AbstractComponent{
+class LastMessage extends AbstractComponent{
   myProps:Props
   constructor(props) {
     super(props);
@@ -19,8 +18,10 @@ class Chat extends AbstractComponent{
   }
 
   renderElement(){
-    this.container.appendChild(this.element)
-    this.lastMessage=new LastMessage(this.myProps)
+    const element=document.createElement('p')
+    element.innerText='finish'
+    this.container.appendChild(element)
+
   }
 
   render(){
@@ -28,4 +29,4 @@ class Chat extends AbstractComponent{
   }
 }
 
-export default Chat
+export default LastMessage

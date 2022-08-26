@@ -1,31 +1,28 @@
 import EventBus from "./EventBus";
+import {Props} from "../utils/types";
 
-
-type Props={
-    tagName:string,
-    classes: [...string[]],
-    text?: string,
-    icon?: never,
-  id: string
-  }
 
 class  AbstractComponent{
   props:Props
-  element: HTMLElement;
-  public init:Function
-
+  element: HTMLDivElement
+  init: Function
+  container: Node|null
   EVENTS={
     INIT: 'component-init',
     MOUNT: 'component-did-mount',
     RENDER: 'component-did-render',
-    UPDATE: 'component-did-update'
+    UPDATE: 'component-did-update',
+    RENDER_BLOCK: 'render-block'
+
   }
   eventBus=new EventBus()
+
 
   constructor(props:Props) {
     this.eventBus=new EventBus()
     this.props=props
-    this.props = this.getProps(props)
+    this.container=null
+    this.props = this.getProps()
     this._registerEvents()
     this.eventBus.emit(this.EVENTS.INIT)
   }
@@ -34,7 +31,6 @@ class  AbstractComponent{
     this.eventBus.on(this.EVENTS.MOUNT, this.componentDidMount.bind(this))
     this.eventBus.on(this.EVENTS.RENDER, this._render.bind(this))
     this.eventBus.on(this.EVENTS.UPDATE, this.componentDidMount.bind(this))
-
   }
   componentDidMount(){
     this.eventBus.emit(this.EVENTS.RENDER)
@@ -42,6 +38,7 @@ class  AbstractComponent{
   componentDipUpdate(){
 
   }
+
   _setProps=(newProps)=> {
     Object.assign(this.props, newProps)
   }
@@ -73,15 +70,14 @@ class  AbstractComponent{
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  render(){}
 
-  _render(){
-    this.element.innerHTML=this._getElement()
+
+  _render() {
+    this.container=document.getElementById(this.props.parentId)
     this.render()
   }
-  _getElement(){
-    return this.getElement()
-  }
+
+
   getProps(){
     const eventBus=this.eventBus
     const EVENTS=this.EVENTS
