@@ -1,16 +1,24 @@
 import AbstractComponent from "../AbstractComponents";
+import {html, render} from 'lit'
 
 class Chats extends AbstractComponent{
+  container:HTMLElement
   constructor(props) {
     super(props);
     this.props=props
-
   }
   init(){
-    console.log(this.element)
+
   }
+  getElement(){
+    return this.element.innerText
+  }
+
   render(){
-    return 'this is chats'
+    const template=html`<p class="pokl">this. is </p>`
+
+    this.element.innerText=   template.strings[0]
+    return this.element
   }
 }
 

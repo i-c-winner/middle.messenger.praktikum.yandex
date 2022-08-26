@@ -9,11 +9,19 @@ class ChatsBox extends AbstractComponent{
 
   }
   init(){
-    console.log(this.element)
+    this.props={
+      ...this.props,
+      classes:['chats']
+    }
     this.chats=new Chats(this.props)
   }
+  getElement(){
+    console.log(this.element.innerText)
+    return this.element
+  }
   render(){
-    return this.element.innerText=this.chats.render()
+
+    return this.element.innerHTML=this.chats.getElement()
   }
 
 }

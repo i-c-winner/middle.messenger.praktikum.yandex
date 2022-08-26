@@ -5,7 +5,8 @@ type Props={
     tagName:string,
     classes: [...string[]],
     text?: string,
-    icon?: never
+    icon?: never,
+  id: string
   }
 
 class  AbstractComponent{
@@ -60,6 +61,7 @@ class  AbstractComponent{
   }
   _init() {
     this.element=document.createElement(this.props.tagName)
+    this.element.id=this.props.id
     this._setClasses()
     this.init()
     this.eventBus.emit(this.EVENTS.RENDER)
@@ -74,9 +76,11 @@ class  AbstractComponent{
   render(){}
 
   _render(){
-
-    this.element.innerText=this.props.text
+    this.element.innerHTML=this._getElement()
     this.render()
+  }
+  _getElement(){
+    return this.getElement()
   }
   getProps(){
     const eventBus=this.eventBus
