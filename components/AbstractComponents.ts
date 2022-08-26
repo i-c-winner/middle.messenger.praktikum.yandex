@@ -6,12 +6,12 @@ type Props={
     classes: [...string[]],
     text?: string,
     icon?: never
-    bind(): never;
   }
 
 class  AbstractComponent{
-  private readonly props:Props
+  props:Props
   element: HTMLElement;
+  public init:Function
 
   EVENTS={
     INIT: 'component-init',
@@ -27,8 +27,6 @@ class  AbstractComponent{
     this.props = this.getProps(props)
     this._registerEvents()
     this.eventBus.emit(this.EVENTS.INIT)
-
-
   }
   _registerEvents(){
     this.eventBus.on(this.EVENTS.INIT, this._init.bind(this))
@@ -62,7 +60,9 @@ class  AbstractComponent{
   }
   _init() {
     this.element=document.createElement(this.props.tagName)
-    this.eventBus.emit(this.EVENTS.MOUNT)
+    this._setClasses()
+    this.init()
+    this.eventBus.emit(this.EVENTS.RENDER)
   }
   _setClasses(){
     this.props.classes.map(style=>{
@@ -74,7 +74,7 @@ class  AbstractComponent{
   render(){}
 
   _render(){
-    this._setClasses()
+
     this.element.innerText=this.props.text
     this.render()
   }
