@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "preserveConstEnums": true,
+    "allowJs": true,
     "lib": [
       "dom",
       "es5",

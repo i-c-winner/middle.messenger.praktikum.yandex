@@ -1,12 +1,3 @@
-import {html, render} from "lit";
-import {LoginForm} from "./components/loginForm";
-const forma=new LoginForm()
-const login=html`
-<div class="login">
-    ${forma.render()}
-</div>
-`
-const element=document.getElementById('root')
+import path from 'path'
 
-
-render(login,element)
+window.location.href=path.resolve(__dirname+'pages/modal.html')
