@@ -1,6 +1,6 @@
 import {LitElement, html} from "lit";
-import tmpl_text from "../tamplates/tmpl_text";
-import tmpl_button from "../tamplates/tmpl_button";
+import tmpl_text from "../../tamplates/tmpl_text";
+import tmpl_button from "../../tamplates/tmpl_button";
 
 export class Error extends LitElement{
   constructor(props) {

@@ -1,4 +1,4 @@
-import AbstractComponent from "../AbstractComponents";
+import AbstractComponent from "../AbstractComponent";
 import LastMessage from "./LastMessage";
 import {Props} from "../../utils/types";
 

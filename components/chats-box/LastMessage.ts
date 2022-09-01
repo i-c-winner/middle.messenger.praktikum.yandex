@@ -1,4 +1,4 @@
-import AbstractComponent from "../AbstractComponents";
+import AbstractComponent from "../AbstractComponent";
 import {Props} from "../../utils/types";
 
 class LastMessage extends AbstractComponent{

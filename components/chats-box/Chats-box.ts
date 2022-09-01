@@ -1,5 +1,5 @@
 import Chats from "./Chats";
-import AbstractComponent from '../AbstractComponents'
+import AbstractComponent from '../AbstractComponent'
 import {Props} from "../../utils/types";
 
 class ChatsBox extends AbstractComponent{

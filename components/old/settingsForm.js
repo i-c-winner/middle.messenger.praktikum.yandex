@@ -1,6 +1,6 @@
 import {html, LitElement} from 'lit'
-import tmpl_input from "../tamplates/tmpl_input";
-import tmpl_button from "../tamplates/tmpl_button";
+import tmpl_input from "../../tamplates/tmpl_input";
+import tmpl_button from "../../tamplates/tmpl_button";
 
 
 export class SettingsForm extends LitElement {

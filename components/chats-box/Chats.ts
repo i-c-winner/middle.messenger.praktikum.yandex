@@ -1,4 +1,4 @@
-import AbstractComponent from "../AbstractComponents";
+import AbstractComponent from "../AbstractComponent";
 import Chat from "./Chat";
 import {Props} from "../../utils/types";
 

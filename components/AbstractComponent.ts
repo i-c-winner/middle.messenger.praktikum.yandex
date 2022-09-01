@@ -1,10 +1,10 @@
-import EventBus from "./EventBus";
+import EventBus from "./old/EventBus";
 import {Props} from "../utils/types";
 
 
 class  AbstractComponent{
   props:Props
-  element: HTMLDivElement
+  element: HTMLElement
   init: Function
   container: Node|null
   EVENTS={
@@ -39,9 +39,6 @@ class  AbstractComponent{
 
   }
 
-  _setProps=(newProps)=> {
-    Object.assign(this.props, newProps)
-  }
   changeClasses(classesForDelete:[...string[]], classesForAdd:[...string[]]) {
     if (classesForDelete.length!==0){
       classesForDelete.map(element=>{
@@ -53,15 +50,17 @@ class  AbstractComponent{
         if (!this.props.classes.includes(elem)) this.props.classes.push(elem)
       })
     }
-    this._setProps(this.props)
-
   }
   _init() {
     this.element=document.createElement(this.props.tagName)
-    this.element.id=this.props.id
-    this._setClasses()
-    this.init()
     this.eventBus.emit(this.EVENTS.RENDER)
+  }
+  _seterProps(){
+    this._setClasses()
+    this._setId()
+  }
+  _setId(){
+    this.element.id=this.props.id
   }
   _setClasses(){
     this.props.classes.map(style=>{
@@ -69,12 +68,8 @@ class  AbstractComponent{
     })
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-
-
   _render() {
-    this.container=document.getElementById(this.props.parentId)
-    this.render()
+    this._seterProps()
   }
 
 

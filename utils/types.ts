@@ -4,7 +4,8 @@ type Props={
     text?: string,
     icon?: never,
     id: string,
-    parentId:string
+    parentId:string,
+    render: Function
 }
 
 export {Props}

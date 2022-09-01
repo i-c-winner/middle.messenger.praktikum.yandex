@@ -1,0 +1,44 @@
+#root-modal {
+  background-color: rgb(236 234 234 / 30%);
+  text-align: center;
+  padding-top: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .form {
+    background-color: white;
+    width: 350px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px greenyellow;
+
+    &__input-box {
+      margin-top: 15px;
+      border-bottom: 1px solid grey;
+      padding: 2px 15px;
+    }
+    &__input-text{
+      &:focus{
+        outline: 0;
+      }
+    }
+    &__buttons {
+      width: 100%;
+      display: flex;
+      flex-flow: column;
+    }
+    &__button {
+      margin-top: 10px;
+      background-color: none;
+
+      &:hover {
+        cursor: pointer
+      }
+    }
+  }
+}
+
