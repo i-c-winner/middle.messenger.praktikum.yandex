@@ -1,8 +1,6 @@
-import {html, map} from "lit";
+import {html} from "lit";
 import tmpl_input from "../../tamplates/tmpl_input";
 import tmpl_button from "../../tamplates/tmpl_button";
-import {map} from "lit/directives/map"
-
 
 class CreaterTemplates{
   private inputsName: [...string[]];
@@ -20,7 +18,6 @@ class CreaterTemplates{
 
   }
   createTemplate(source){
-    console.log(source.inputs, source)
     return html`
            <h3>${source.title}</h3>
        ${source.inputs.map(input=>{
