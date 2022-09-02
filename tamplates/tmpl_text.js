@@ -1,5 +1,5 @@
 import {html} from "lit";
 
-const tmpl_text=(o)=>html`<p class="${o.classWrapper}"><span class="${o.classText}">${o.text}</span></p>`
+const tmpl_text=(params)=>html`<p class="${params.classWrapper}"><span class="${params.classText}">${params.text}</span></p>`
 
 export default tmpl_text
