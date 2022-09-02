@@ -7,13 +7,14 @@ import tmpl_button from "../../tamplates/tmpl_button";
 class CreaterTemplates{
   private fields: [...string[]];
   constructor(props) {
-    this.fields=[]
+    this.inputsName=[]
+
   }
-  template(source){
+  createTemplate(source){
     return html`
            <h3>${source.title}</h3>
        ${source.inputs.map(input=>{
-    this.fields.push(input.name)
+    this.inputsName.push(input.name)
     return  html`${tmpl_input({      
       placeholder: input.placeholder,
       type: input.type,
@@ -29,12 +30,18 @@ class CreaterTemplates{
       })
     }`
   })}  
-           </div>
-       
+           </div>       
         `
-
   }
 
+  createListeners(){
+    const form=document.forms[0]
+    console.log(this.fields)
+    this.inputsName.map(name=>{
+      form[name].addEventListener('focus', (event)=>event.target.parentNode.style="border: 1px solid blue")
+      form[name].addEventListener('blur', (event)=>event.target.parentNode.style='none')
+    })
+  }
 }
 
 export default CreaterTemplates

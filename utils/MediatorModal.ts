@@ -6,7 +6,7 @@ const createrTemplates=new CreaterTemplates()
 function MediatorModal(){
   this.init=function(){
     this.modal=new Modal ({
-      tagName: 'div',
+      tagName: 'form',
       id: 'form',
       classes: ['form'],
       parentId: "root-modal",
@@ -17,10 +17,11 @@ function MediatorModal(){
   this.dispatch=function(){
     const template=this.getTemplate('login')
     this.modal.dispatchComponentDidMount(template)
+    createrTemplates.createListeners()
   }
   this.getTemplate=function (type){
     const source=templates.login
-    return createrTemplates.template(source)
+    return createrTemplates.createTemplate(source)
   }
 }
 
