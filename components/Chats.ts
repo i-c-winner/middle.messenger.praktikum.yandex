@@ -1,6 +1,6 @@
-import AbstractComponent from "../AbstractComponent";
+import AbstractComponent from "./AbstractComponent";
 import Chat from "./Chat";
-import {Props} from "../../utils/types";
+import {Props} from "../utils/types";
 
 class Chats extends AbstractComponent{
   private chat: Chat;

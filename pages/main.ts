@@ -1,4 +1,4 @@
-import {ChatsBox} from "../components/chats-box";
+import ChatsBox from "../components/Chats-box";
 
 const chatsBox=new ChatsBox({
   parentId: 'main_chats',

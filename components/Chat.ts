@@ -1,4 +1,4 @@
-import AbstractComponent from "../AbstractComponent";
+import AbstractComponent from "./AbstractComponent";
 
 class Chat extends AbstractComponent{
 

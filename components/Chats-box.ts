@@ -1,5 +1,5 @@
 import Chats from "./Chats";
-import AbstractComponent from '../AbstractComponent'
+import AbstractComponent from './AbstractComponent'
 
 
 
