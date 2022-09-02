@@ -5,7 +5,6 @@ type Props={
     icon?: never,
     id: string,
     parentId:string,
-    render: Function
 }
 
 export {Props}

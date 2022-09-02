@@ -1,5 +1,6 @@
-import EventBus from "./old/EventBus";
+import EventBus from "./EventBus";
 import {Props} from "../utils/types";
+import {render} from "lit";
 
 
 class  AbstractComponent{
@@ -12,11 +13,8 @@ class  AbstractComponent{
     MOUNT: 'component-did-mount',
     RENDER: 'component-did-render',
     UPDATE: 'component-did-update',
-    RENDER_BLOCK: 'render-block'
-
   }
   eventBus=new EventBus()
-
 
   constructor(props:Props) {
     this.eventBus=new EventBus()
@@ -25,15 +23,23 @@ class  AbstractComponent{
     this.props = this.getProps()
     this._registerEvents()
     this.eventBus.emit(this.EVENTS.INIT)
+    this.rendering=render
   }
   _registerEvents(){
     this.eventBus.on(this.EVENTS.INIT, this._init.bind(this))
-    this.eventBus.on(this.EVENTS.MOUNT, this.componentDidMount.bind(this))
+    this.eventBus.on(this.EVENTS.MOUNT, this._componentDidMount.bind(this))
     this.eventBus.on(this.EVENTS.RENDER, this._render.bind(this))
     this.eventBus.on(this.EVENTS.UPDATE, this.componentDidMount.bind(this))
   }
   componentDidMount(){
     this.eventBus.emit(this.EVENTS.RENDER)
+  }
+
+  dispatchComponentDidMount(template){
+    this.eventBus.emit(this.EVENTS.MOUNT, template)
+  }
+  _componentDidMount(template){
+    render(template, this.element)
   }
   componentDipUpdate(){
 
@@ -70,6 +76,7 @@ class  AbstractComponent{
 
   _render() {
     this._seterProps()
+    document.getElementById(this.props.parentId).appendChild(this.element)
   }
 
 
@@ -86,7 +93,7 @@ class  AbstractComponent{
       },
       set(target:Props, prop: string, value:never){
         target[prop]=value
-        eventBus.emit(EVENTS.UPDATE)
+        eventBus.emit(EVENTS.RENDER)
         return true
       },
       defineProperty(target: Props, prop: string | symbol, attributes: PropertyDescriptor): boolean {

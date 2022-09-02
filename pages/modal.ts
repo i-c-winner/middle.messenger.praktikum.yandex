@@ -1,12 +1,5 @@
-import Modal from "../components/Modal/Modal";
-import masterModal from "../components/Modal/masterModal";
+import MediatorModal from "../utils/MediatorModal";
 
-const modal=new Modal({
-  id: 'modal',
-  classes: ['form'],
-  children: null,
-  tagName: 'div'
-})
-modal.render()
-masterModal('login', modal)
+const mediaorModal=new MediatorModal()
+mediaorModal.init()
 
