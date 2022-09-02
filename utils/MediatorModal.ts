@@ -1,6 +1,7 @@
 import Modal from "../components/Modal/Modal";
 import templates from "../components/Modal/dataBasa";
 import CreaterTemplates from "../components/Modal/CreaterTemplates";
+import path from 'path'
 
 const createrTemplates=new CreaterTemplates({})
 function MediatorModal(){
@@ -31,6 +32,9 @@ function MediatorModal(){
       target.addEventListener('click', ()=>{
         if (button.clickType==='changeModal'){
           this.update(button.target)
+        } else {
+          console.log(`/pages/${button.target}`)
+          window.location.href=`/pages/${button.target}.html`
         }
       })
     })

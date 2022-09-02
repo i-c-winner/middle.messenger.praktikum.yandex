@@ -48,6 +48,7 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
+    "@types/node": "^18.7.14",
     "express": "^4.18.1",
     "parcel": "^2.7.0"
   }

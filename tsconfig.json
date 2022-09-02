@@ -2,6 +2,7 @@
   "compilerOptions": {
     "preserveConstEnums": true,
     "allowJs": true,
+    "esModuleInterop": true,
     "lib": [
       "dom",
       "es5",
@@ -11,6 +12,7 @@
       "es2015.proxy"
     ]
   },
+
   "include": ["components", "pages"],
   "exclude": ["node_modules", "**/*.spec.ts"]
   }
