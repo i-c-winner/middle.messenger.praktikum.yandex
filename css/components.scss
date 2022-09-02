@@ -42,6 +42,7 @@
         cursor: pointer;
       }
     }
+
     &__title {
       font-size: 25px;
       font-weight: bold;
@@ -99,11 +100,33 @@
     padding: 5px 20px;
   }
 }
-.header__button {
-  width: 30px;
-  height: 30px;
 
-  &:hover {
-    cursor: pointer;
+.header {
+  position: relative;
+
+  &__modal {
+    position: absolute;
+    padding: 5px 10px;
+    background-color: #eae1e1;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px forestgreen;
+    right: 80px;
+    top: 20px;
+  }
+  &__list {
+    list-style-type: none;
+    padding: 0;
+  }
+  &__item{
+    margin: 5px 0;
+  }
+
+  &__button {
+    width: 30px;
+    height: 30px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
