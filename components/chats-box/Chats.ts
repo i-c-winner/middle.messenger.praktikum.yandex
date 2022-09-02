@@ -4,30 +4,18 @@ import {Props} from "../../utils/types";
 
 class Chats extends AbstractComponent{
   private chat: Chat;
-  private myProps: Props
   constructor(props) {
     super(props);
-    this.props=props
-    this.myProps=props
   }
 
-  init(){
-    console.log(this.props, 'props')
-    this.myProps={
-      ...this.props,
-      classes:['chat'],
-      parentId:'chats',
+  dispatchComponentDidMount() {
+    this.chat=new Chat({
+      tagName: 'div',
+      classes: ['chat'],
       id: 'chat',
-    }
-  }
-
-  renderElement(){
-    this.container.appendChild(this.element)
-    this.chat=new Chat(this.myProps)
-  }
-
-  render(){
-    this.renderElement()
+      parentId: 'chats'
+    })
+    this.chat.dispatchComponentDidMount(null)
   }
 }
 

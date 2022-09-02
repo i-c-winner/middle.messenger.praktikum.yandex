@@ -40,9 +40,5 @@ class Modal extends AbstractComponent {
 
     render(element, this.element)
   }
-
-  render() {
-    document.getElementById('root-modal').appendChild(this.element)
-  }
 }
 export default Modal
