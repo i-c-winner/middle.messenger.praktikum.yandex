@@ -1,5 +1,5 @@
 import MediatorModal from "../utils/MediatorModal";
 
-const mediaorModal=new MediatorModal()
-mediaorModal.init()
+const mediatorModal=new MediatorModal()
+mediatorModal.init()
 

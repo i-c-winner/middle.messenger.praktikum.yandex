@@ -23,13 +23,12 @@ class  AbstractComponent{
     this.props = this.getProps()
     this._registerEvents()
     this.eventBus.emit(this.EVENTS.INIT)
-    this.rendering=render
   }
   _registerEvents(){
     this.eventBus.on(this.EVENTS.INIT, this._init.bind(this))
     this.eventBus.on(this.EVENTS.MOUNT, this._componentDidMount.bind(this))
     this.eventBus.on(this.EVENTS.RENDER, this._render.bind(this))
-    this.eventBus.on(this.EVENTS.UPDATE, this.componentDidMount.bind(this))
+    this.eventBus.on(this.EVENTS.UPDATE, this._componentDidUpdate.bind(this))
   }
   componentDidMount(){
     this.eventBus.emit(this.EVENTS.RENDER)
@@ -41,8 +40,12 @@ class  AbstractComponent{
   _componentDidMount(template){
     render(template, this.element)
   }
-  componentDipUpdate(){
+  dispatchComponentDidUpdate(template){
+    this.eventBus.emit(this.EVENTS.UPDATE, template)
+  }
 
+  _componentDidUpdate(template){
+    render(template, this.element)
   }
 
   changeClasses(classesForDelete:[...string[]], classesForAdd:[...string[]]) {

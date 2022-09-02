@@ -18,13 +18,23 @@ const templates={
       ],
     buttons: [
       {
-        text: "Авторизоваться"
+        text: "Авторизоваться",
+        clickType: 'changePage',
+        target: 'main',
+        id: 'login_button'
       },
       {
-        text: "Нет аккаунта"
+        text: "Нет аккаунта",
+        clickType: "changeModal",
+        target: 'registration',
+        id: 'registration_button'
       }
-    ]
-
+    ],
+  },
+  registration: {
+    title: 'Регистрация',
+    inputs: [],
+    buttons: []
   }
 }
 

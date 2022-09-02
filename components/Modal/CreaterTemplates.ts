@@ -1,16 +1,26 @@
-import {html} from "lit";
-import {map} from  'lit/directives/map'
+import {html, map} from "lit";
 import tmpl_input from "../../tamplates/tmpl_input";
 import tmpl_button from "../../tamplates/tmpl_button";
+import {map} from "lit/directives/map"
 
 
 class CreaterTemplates{
-  private fields: [...string[]];
+  private inputsName: [...string[]];
+
+  private buttons: [
+      ...{
+      clickType: string,
+      target: string,
+    id:string
+      }[]
+  ]
   constructor(props) {
     this.inputsName=[]
+    this.buttons=[]
 
   }
   createTemplate(source){
+    console.log(source.inputs, source)
     return html`
            <h3>${source.title}</h3>
        ${source.inputs.map(input=>{
@@ -23,20 +33,31 @@ class CreaterTemplates{
     })}`
   })}<div class="form__buttons">
              ${source.buttons.map(button=>{
+    this.buttons.push({     
+      id:button.id,
+      clickType: button.clickType,
+      target: button.target
+    })
     return html`${
       tmpl_button({
         text: button.text,
-        class: 'form__button'
+        class: 'form__button',
+        id: button.id,
+        click: this.stopReset
       })
     }`
   })}  
            </div>       
         `
   }
-
-  createListeners(){
+  stopReset(event){
+    event.preventDefault()
+  }
+  getButtons() {
+    return this.buttons
+  }
+  createInputsListeners(){
     const form=document.forms[0]
-    console.log(this.fields)
     this.inputsName.map(name=>{
       form[name].addEventListener('focus', (event)=>event.target.parentNode.style="border: 1px solid blue")
       form[name].addEventListener('blur', (event)=>event.target.parentNode.style='none')
