@@ -1,6 +1,7 @@
 import {html} from "lit";
 import tmpl_input from "../../tamplates/tmpl_input";
 import tmpl_button from "../../tamplates/tmpl_button";
+import tmpl_text from "../../tamplates/tmpl_text";
 
 class CreaterTemplates{
   private inputsName: [...string[]];
@@ -19,6 +20,12 @@ class CreaterTemplates{
   }
   createTemplate(source){
     return html`
+      ${source.texts.map(text=>{
+    return html`${tmpl_text({
+      text: text.text,
+      classWrapper: text.classWrapper
+    })}`
+  })}
            <h3>${source.title}</h3>
        ${source.inputs.map(input=>{
     this.inputsName.push(input.name)

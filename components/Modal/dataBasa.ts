@@ -1,6 +1,9 @@
 const templates={
   login: {
-    title: "Авторизация",
+    texts:[{
+      text: "Авторизация",
+      classWrapper: 'form__title'
+    }],
     inputs:
       [
         {
@@ -32,7 +35,11 @@ const templates={
     ],
   },
   registration: {
-    title: 'Регистрация',
+    texts:[{
+      text: "Авторизация",
+      classWrapper: 'form__title'
+
+    }],
     inputs: [
       {
         placeholder: "Почта",
