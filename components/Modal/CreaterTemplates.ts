@@ -54,12 +54,13 @@ class CreaterTemplates{
            </div>       
         `
     } else {
-      return html`   ${source.texts.map(text=>{
-        return html`${tmpl_text({
-          text: text.text,
-          classWrapper: text.classWrapper
-        })}`
-      })}`
+      return html`   
+        <ul class="header__list">
+          ${source.texts.map(text=>{
+    return html`<li class="${text.class}">${text.text}</li>`
+  })}
+        </ul>        
+        `
     }
 
   }

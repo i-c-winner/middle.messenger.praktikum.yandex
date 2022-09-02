@@ -102,14 +102,12 @@ const templates={
   },
   headerButton: {
     texts:[{
-      text: "Авторизация",
-      classWrapper: 'form__title'
-
+      text: "Добавить пользователя",
+      class: 'list__item'
     },
     {
-      text: "Авторизация",
-      classWrapper: 'form__title'
-
+      text: "Удалить пользователя",
+      class: 'list__item'
     }],
     inputs: [],
     buttons: []

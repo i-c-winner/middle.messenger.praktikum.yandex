@@ -22,6 +22,8 @@ ${tmpl_img({path: imageMenu, click: clickHeaderButton, class: 'header__button'})
 const container=document.querySelector('.main__header') as HTMLElement
 render(element, container)
 function clickHeaderButton(){
+  const elementWithModal=document.getElementById('list')
+  if (elementWithModal) elementWithModal.remove()
   const mediatorModal=new MediatorModal()
   mediatorModal.initSmallModal()
 }
