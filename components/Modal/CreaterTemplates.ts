@@ -18,18 +18,18 @@ class CreaterTemplates{
     this.buttons=[]
 
   }
-  createTemplate(source){
-    return html`
+  createTemplate(source, id){
+    if (id==='form'){
+      return html`
       ${source.texts.map(text=>{
     return html`${tmpl_text({
       text: text.text,
       classWrapper: text.classWrapper
     })}`
   })}
-           <h3>${source.title}</h3>
-       ${source.inputs.map(input=>{
+         ${source.inputs.map(input=>{
     this.inputsName.push(input.name)
-    return  html`${tmpl_input({      
+    return  html`${tmpl_input({
       placeholder: input.placeholder,
       type: input.type,
       class: input.class,
@@ -37,7 +37,7 @@ class CreaterTemplates{
     })}`
   })}<div class="form__buttons">
              ${source.buttons.map(button=>{
-    this.buttons.push({     
+    this.buttons.push({
       id:button.id,
       clickType: button.clickType,
       target: button.target
@@ -53,6 +53,15 @@ class CreaterTemplates{
   })}  
            </div>       
         `
+    } else {
+      return html`   ${source.texts.map(text=>{
+        return html`${tmpl_text({
+          text: text.text,
+          classWrapper: text.classWrapper
+        })}`
+      })}`
+    }
+
   }
   stopReset(event){
     event.preventDefault()

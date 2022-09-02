@@ -99,6 +99,20 @@ const templates={
         id: 'login_button'
       }
     ]
+  },
+  headerButton: {
+    texts:[{
+      text: "Авторизация",
+      classWrapper: 'form__title'
+
+    },
+    {
+      text: "Авторизация",
+      classWrapper: 'form__title'
+
+    }],
+    inputs: [],
+    buttons: []
   }
 }
 

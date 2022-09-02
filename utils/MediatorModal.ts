@@ -12,18 +12,27 @@ function MediatorModal(){
       classes: ['form'],
       parentId: "root-modal",
     })
-    this.dispatch()
+    this.dispatch('login')
+  }
+  this.initSmallModal=function(){
+    this.modal=new Modal ({
+      tagName: 'div',
+      classes: ['header__modal'],
+      parentId: 'header',
+      id: 'list'
+    })
+    this.dispatch('headerButton')
   }
 
-  this.dispatch=function(){
-    const template=this.getTemplate('login')
+  this.dispatch=function(templateName){
+    const template=this.getTemplate(templateName)
     this.modal.dispatchComponentDidMount(template)
     createrTemplates.createInputsListeners()
     this.setButtonsListeners(createrTemplates.getButtons())
   }
   this.getTemplate=function (type){
     const source=templates[type]
-    return createrTemplates.createTemplate(source)
+    return createrTemplates.createTemplate(source, this.modal.props.id)
   }
 
   this.setButtonsListeners= function (buttons){
