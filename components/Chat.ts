@@ -8,7 +8,7 @@ class Chat extends AbstractComponent{
     this.props=props
   }
   dispatchComponentDidMount() {
-    console.log(this.props)
+
     const template=html`
       <div class="chat__img-box">
         <div class="chat__img"></div>
