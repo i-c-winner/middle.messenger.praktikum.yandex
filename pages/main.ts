@@ -3,7 +3,7 @@ import {html, render} from 'lit'
 import tmpl_text from '../tamplates/tmpl_text'
 import tmpl_img from '../tamplates/tmpl_image'
 const imageMenu = require('../static/images/munePoint.png')
-import MediatorModal from "../utils/MediatorModal";
+import SmallModal from "../components/smallModal/SmallModal";
 
 const chatsBox=new ChatsBox({
   parentId: 'main-chats',
@@ -24,5 +24,10 @@ render(element, container)
 function clickHeaderButton(){
   const elementWithModal=document.getElementById('list')
   if (elementWithModal) elementWithModal.remove()
+  const smallModal= new SmallModal()
+  smallModal.create({
+    parentId: 'header',
+    class: 'small-modal'
+  })
 }
 

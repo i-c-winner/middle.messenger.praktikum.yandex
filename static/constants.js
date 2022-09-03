@@ -26,4 +26,9 @@ const constanst={
   ]
 }
 
+const SMALLMODALID={
+  HEADER_BUTTON: 'header-button'
+}
+
+export {SMALLMODALID}
 export default constanst

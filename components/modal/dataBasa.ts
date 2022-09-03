@@ -103,7 +103,7 @@ const templates={
   headerButton: {
     texts:[{
       text: "Добавить пользователя",
-      class: 'list__item'
+      class: 'list__item',
     },
     {
       text: "Удалить пользователя",
