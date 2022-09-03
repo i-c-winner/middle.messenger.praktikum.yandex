@@ -30,4 +30,8 @@ function clickHeaderButton(){
     classes: ['small-modal', 'small-modal_header']
   })
 }
+document.body.addEventListener('keydown',()=>{
+  const element=document.querySelector('.small-modal')
+  if (element) element.remove()
+})
 
