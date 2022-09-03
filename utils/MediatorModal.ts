@@ -1,6 +1,6 @@
-import Modal from "../components/Modal/Modal";
-import templates from "../components/Modal/dataBasa";
-import CreaterTemplates from "../components/Modal/CreaterTemplates";
+import Modal from "../components/modal/Modal";
+import templates from "../components/modal/dataBasa";
+import CreaterTemplates from "../components/modal/CreaterTemplates";
 
 
 const createrTemplates=new CreaterTemplates({})
