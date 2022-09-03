@@ -1,3 +1,5 @@
+const plusIcon = require('../../static/images/plus.png')
+const minusIcon = require('../../static/images/minus.png')
 const templates={
   login: {
     texts:[{
@@ -101,13 +103,13 @@ const templates={
     ]
   },
   headerButton: {
-    texts:[{
+    items:[{
       text: "Добавить пользователя",
-      class: 'list__item',
+      imgPath: plusIcon
     },
     {
       text: "Удалить пользователя",
-      class: 'list__item'
+      imgPath: minusIcon
     }],
     inputs: [],
     buttons: []

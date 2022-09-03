@@ -1,3 +1,11 @@
+@mixin modal {
+  background-color: white;
+  margin: 0 auto;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px greenyellow;
+}
+
 #root-modal {
   background-color: rgb(236 234 234 / 30%);
   text-align: center;
@@ -9,12 +17,8 @@
   bottom: 0;
 
   .form {
-    background-color: white;
+    @include modal;
     width: 350px;
-    margin: 0 auto;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 5px greenyellow;
 
     &__input-box {
       margin-top: 15px;
@@ -113,12 +117,17 @@
     right: 80px;
     top: 20px;
   }
+
   &__list {
     list-style-type: none;
     padding: 0;
+    display: flex;
+    flex-flow: column;
   }
-  &__item{
+
+  &__item {
     margin: 5px 0;
+    display: flex;
   }
 
   &__button {
@@ -128,5 +137,27 @@
     &:hover {
       cursor: pointer;
     }
+  }
+
+  &__image {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  &__text {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.small-modal {
+  @include modal;
+
+  &_header {
+    position: absolute;
+    top: 10px;
+    right: 150px;
   }
 }

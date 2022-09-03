@@ -27,7 +27,7 @@ function clickHeaderButton(){
   const smallModal= new SmallModal()
   smallModal.create({
     parentId: 'header',
-    class: 'small-modal'
+    classes: ['small-modal', 'small-modal_header']
   })
 }
 
