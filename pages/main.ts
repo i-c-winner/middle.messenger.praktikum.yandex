@@ -3,8 +3,13 @@ import {html, render} from 'lit'
 import tmpl_text from '../tamplates/tmpl_text'
 import tmpl_img from '../tamplates/tmpl_image'
 const imageMenu = require('../static/images/munePoint.png')
+const clip = require('../static/images/clip.png')
+const array=require('../static/images/array.png')
 import SmallModal from '../components/smallModal/SmallModal';
 import chatsList from '../static/chatsList'
+import tmpl_input from "../tamplates/tmpl_input";
+import tmpl_button from "../tamplates/tmpl_button";
+import tmpl_image from "../tamplates/tmpl_image";
 
 
 createChatsSection()
@@ -21,8 +26,10 @@ function createChatsSection(){
 
 createMessageSection()
 function createMessageSection() {
+  const page=document.getElementById('main-message')
   createHeader()
-  createrMessagesBody()
+  createrMessagesBody(page)
+  createFooter(page)
 }
 
 function createHeader() {
@@ -43,12 +50,13 @@ ${tmpl_img({path: imageMenu, click: clickHeaderButton, class: 'header__button'})
     })
   }
 }
-function createrMessagesBody(){
+
+function createrMessagesBody(page){
   document.body.addEventListener('keydown',()=>{
     const element=document.querySelector('.small-modal')
     if (element) element.remove()
   })
-  const page=document.getElementById('main-message')
+
   const messages=document.createElement('div')
   messages.classList.add('messages')
 
@@ -84,6 +92,33 @@ function createrMessagesBody(){
     } else {
       container.classList.add('message_outer')
     }
-  }
 
+  }
+}
+
+function createFooter(page) {
+  const footer=document.createElement('div')
+  footer.classList.add('footer')
+  const element=html`
+    ${tmpl_img({
+    path: clip,
+    class: 'footer__plus'
+  })}
+    ${tmpl_input({
+    name: 'message',
+    type: 'text',
+    class: 'message__input'
+  })}
+    ${tmpl_img({
+    path: array,
+    class: 'message__link',
+    click: footerGoLink
+  })}
+    `
+  render(element, footer)
+  page.appendChild(footer)
+
+  function footerGoLink() {
+    console.log('footer link')
+  }
 }
