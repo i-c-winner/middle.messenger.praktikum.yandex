@@ -6,44 +6,57 @@ const imageMenu = require('../static/images/munePoint.png')
 import SmallModal from '../components/smallModal/SmallModal';
 import chatsList from '../static/chatsList'
 
-const chatsBox=new ChatsBox({
-  parentId: 'main-chats',
-  tagName: 'div',
-  id: 'chats_box',
-  classes: ['chats_box']
-}
-)
-chatsBox.dispatchComponentDidMount()
 
-const element=html`${tmpl_text({
-  text: "Vasja",
-  classWrapper: 'header__name'})
+createChatsSection()
+function createChatsSection(){
+  const chatsBox=new ChatsBox({
+    parentId: 'main-chats',
+    tagName: 'div',
+    id: 'chats_box',
+    classes: ['chats_box']
+  }
+  )
+  chatsBox.dispatchComponentDidMount()
 }
+
+createMessageSection()
+function createMessageSection() {
+  createHeader()
+  createrMessagesBody()
+}
+
+function createHeader() {
+  const element=html`${tmpl_text({
+    text: "Vasja",
+    classWrapper: 'header__name'})
+  }
 ${tmpl_img({path: imageMenu, click: clickHeaderButton, class: 'header__button'})}`
-const container=document.querySelector('.main__header') as HTMLElement
-render(element, container)
-function clickHeaderButton(){
-  const elementWithModal=document.getElementById('list')
-  if (elementWithModal) elementWithModal.remove()
-  const smallModal= new SmallModal()
-  smallModal.create({
-    parentId: 'header',
-    classes: ['small-modal', 'small-modal_header']
-  })
+  const container=document.querySelector('.main__header') as HTMLElement
+  render(element, container)
+  function clickHeaderButton(){
+    const elementWithModal=document.getElementById('list')
+    if (elementWithModal) elementWithModal.remove()
+    const smallModal= new SmallModal()
+    smallModal.create({
+      parentId: 'header',
+      classes: ['small-modal', 'small-modal_header']
+    })
+  }
 }
-document.body.addEventListener('keydown',()=>{
-  const element=document.querySelector('.small-modal')
-  if (element) element.remove()
-})
-const page=document.getElementById('main-message')
-const messages=document.createElement('div')
-messages.classList.add('messages')
+function createrMessagesBody(){
+  document.body.addEventListener('keydown',()=>{
+    const element=document.querySelector('.small-modal')
+    if (element) element.remove()
+  })
+  const page=document.getElementById('main-message')
+  const messages=document.createElement('div')
+  messages.classList.add('messages')
 
-chatsList.map(chat=>{
-  const cardChats=document.createElement('div')
-  setClasses(cardChats, chat.type)
+  chatsList.map(chat=>{
+    const cardChats=document.createElement('div')
+    setClasses(cardChats, chat.type)
 
-  const element=html`
+    const element=html`
       <div class="message__list">
           ${tmpl_text({
     text: chat.text,
@@ -59,17 +72,18 @@ chatsList.map(chat=>{
   })}
       </div>      
  `
-  render(element, cardChats)
-  messages.appendChild(cardChats)
+    render(element, cardChats)
+    messages.appendChild(cardChats)
 
-})
-page.appendChild(messages)
-function setClasses(container, type) {
-  container.classList.add('message')
-  if (type==='inner') {
-    container.classList.add('message_inner')
-  } else {
-    container.classList.add('message_outer')
+  })
+  page.appendChild(messages)
+  function setClasses(container, type) {
+    container.classList.add('message')
+    if (type==='inner') {
+      container.classList.add('message_inner')
+    } else {
+      container.classList.add('message_outer')
+    }
   }
-}
 
+}
