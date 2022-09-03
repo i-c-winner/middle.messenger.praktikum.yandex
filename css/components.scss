@@ -18,6 +18,7 @@
 
   .form {
     @include modal;
+
     width: 350px;
 
     &__input-box {
@@ -97,6 +98,7 @@
   display: flex;
   flex-flow: column;
   width: 100%;
+  padding: 0 15px;
 
   .main__header {
     display: flex;
@@ -160,4 +162,15 @@
     top: 10px;
     right: 150px;
   }
+}
+
+.message {
+  @include modal;
+
+  &_outer {
+    align-self: flex-end;
+  }
+
+  max-width: 50%;
+  margin: 25px 5px;
 }

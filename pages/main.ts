@@ -36,24 +36,39 @@ document.body.addEventListener('keydown',()=>{
   if (element) element.remove()
 })
 const page=document.getElementById('main-message')
+
+
 chatsList.map(chat=>{
   const cardChats=document.createElement('div')
-  const element=html`${tmpl_text({
+  setClasses(cardChats, chat.type)
+
+  const element=html`
+      <div class="message__list">
+          ${tmpl_text({
     text: chat.text,
-    classWrapper: ()=>chat.type==='inner'?'message__text message__text_inner': 'message__text message__text_outer'
+    classWrapper:'message__text'
   })}
-  ${tmpl_img({
+          ${tmpl_img({
     path: chat.img,
     class: 'message__img'
   })}
- ${tmpl_text({
+          ${tmpl_text({
     text: chat.time(),
     classWrapper: 'message__time'
   })}
+      </div>      
  `
   render(element, cardChats)
   page.appendChild(cardChats)
 
 })
 
+function setClasses(container, type) {
+  container.classList.add('message')
+  if (type==='inner') {
+    container.classList.add('message_inner')
+  } else {
+    container.classList.add('message_outer')
+  }
+}
 
