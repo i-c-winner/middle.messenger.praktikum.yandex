@@ -98,7 +98,14 @@
   display: flex;
   flex-flow: column;
   width: 100%;
-  padding: 0 15px;
+  height: 100vh;
+  overflow-y: scroll;
+
+  .messages {
+    display: flex;
+    flex-flow: column;
+    padding: 25px;
+  }
 
   .main__header {
     display: flex;

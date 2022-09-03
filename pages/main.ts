@@ -36,7 +36,8 @@ document.body.addEventListener('keydown',()=>{
   if (element) element.remove()
 })
 const page=document.getElementById('main-message')
-
+const messages=document.createElement('div')
+messages.classList.add('messages')
 
 chatsList.map(chat=>{
   const cardChats=document.createElement('div')
@@ -59,10 +60,10 @@ chatsList.map(chat=>{
       </div>      
  `
   render(element, cardChats)
-  page.appendChild(cardChats)
+  messages.appendChild(cardChats)
 
 })
-
+page.appendChild(messages)
 function setClasses(container, type) {
   container.classList.add('message')
   if (type==='inner') {
