@@ -1,4 +1,7 @@
 type Props={
+    name: string,
+    message: string,
+    counter: number,
     tagName:string,
     classes: [...string[]],
     text?: string,
