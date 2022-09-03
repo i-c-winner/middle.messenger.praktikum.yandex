@@ -100,6 +100,7 @@
   width: 100%;
   height: 100vh;
   overflow-y: scroll;
+  position: relative;
 
   .messages {
     display: flex;
@@ -176,8 +177,51 @@
 
   &_outer {
     align-self: flex-end;
+    background-color: antiquewhite;
+    box-shadow: -2px -2px 5px red;
   }
 
   max-width: 50%;
   margin: 25px 5px;
+}
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: white;
+  padding: 15px 0;
+
+  &__attache {
+    margin: 0 auto;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__input {
+    flex-basis: 90%;
+    border: none;
+    padding-left: 10px;
+
+    &:focus {
+      outline: 0;
+      border: 1px solid blue;
+    }
+
+    &:blur {
+      border: none;
+    }
+  }
+
+  &__link {
+    margin: 0 auto;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

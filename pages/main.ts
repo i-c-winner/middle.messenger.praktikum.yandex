@@ -102,16 +102,12 @@ function createFooter(page) {
   const element=html`
     ${tmpl_img({
     path: clip,
-    class: 'footer__plus'
+    class: 'footer__attache'
   })}
-    ${tmpl_input({
-    name: 'message',
-    type: 'text',
-    class: 'message__input'
-  })}
+    <input name="message" class="footer__input" type="text"/>
     ${tmpl_img({
     path: array,
-    class: 'message__link',
+    class: 'footer__link',
     click: footerGoLink
   })}
     `
