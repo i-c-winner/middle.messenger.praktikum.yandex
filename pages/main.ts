@@ -24,7 +24,5 @@ render(element, container)
 function clickHeaderButton(){
   const elementWithModal=document.getElementById('list')
   if (elementWithModal) elementWithModal.remove()
-  const mediatorModal=new MediatorModal()
-  mediatorModal.initSmallModal()
 }
 

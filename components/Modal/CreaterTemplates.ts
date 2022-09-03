@@ -18,9 +18,8 @@ class CreaterTemplates{
     this.buttons=[]
 
   }
-  createTemplate(source, id){
-    if (id==='form'){
-      return html`
+  createTemplate(source){
+    return html`
       ${source.texts.map(text=>{
     return html`${tmpl_text({
       text: text.text,
@@ -53,16 +52,6 @@ class CreaterTemplates{
   })}  
            </div>       
         `
-    } else {
-      return html`   
-        <ul class="header__list">
-          ${source.texts.map(text=>{
-    return html`<li class="${text.class}">${text.text}</li>`
-  })}
-        </ul>        
-        `
-    }
-
   }
   stopReset(event){
     event.preventDefault()

@@ -1,7 +1,7 @@
 import Modal from "../components/Modal/Modal";
 import templates from "../components/Modal/dataBasa";
 import CreaterTemplates from "../components/Modal/CreaterTemplates";
-import path from 'path'
+
 
 const createrTemplates=new CreaterTemplates({})
 function MediatorModal(){
@@ -14,15 +14,6 @@ function MediatorModal(){
     })
     this.dispatch('login')
   }
-  this.initSmallModal=function(){
-    this.modal=new Modal ({
-      tagName: 'div',
-      classes: ['header__modal'],
-      parentId: 'header',
-      id: 'list'
-    })
-    this.dispatch('headerButton')
-  }
 
   this.dispatch=function(templateName){
     const template=this.getTemplate(templateName)
@@ -32,7 +23,7 @@ function MediatorModal(){
   }
   this.getTemplate=function (type){
     const source=templates[type]
-    return createrTemplates.createTemplate(source, this.modal.props.id)
+    return createrTemplates.createTemplate(source)
   }
 
   this.setButtonsListeners= function (buttons){
