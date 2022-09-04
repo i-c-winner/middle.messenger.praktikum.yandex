@@ -21,6 +21,10 @@
 
     width: 350px;
 
+    &__input-wrapper {
+      position: relative;
+    }
+
     &__input-box {
       margin-top: 15px;
       border-bottom: 1px solid grey;
@@ -51,6 +55,15 @@
     &__title {
       font-size: 25px;
       font-weight: bold;
+    }
+
+    &__error {
+      position: absolute;
+      left: 405px;
+      width: 405px;
+      color: red;
+      bottom: -15px;
+      text-align: left;
     }
   }
 }

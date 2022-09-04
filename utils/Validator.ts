@@ -1,18 +1,19 @@
 class Validator {
   oneValidator(type){
+    console.log(type)
     switch (type) {
     case 'name':
-      return this.validatorName()
+      return this.validatorName(type)
     case 'second_name':
-      return this.validatorSecondName()
+      return this.validatorSecondName(type)
     case 'email':
-      return this.validatorEmail()
+      return this.validatorEmail(type)
     case 'phone':
-      return this.validatorPhone()
+      return this.validatorPhone(type)
     case 'password':
-      return this.validatorPassword()
+      return this.validatorPassword(type)
     case 'login':
-      return this.validatorLogin()
+      return this.validatorLogin(type)
 
     default: return true
 
@@ -26,26 +27,26 @@ class Validator {
     return flag
   }
 
-  validatorName(){
-
+  validatorName(type){
+    return false
   }
 
-  validatorSecondName() {
-
+  validatorSecondName(type) {
+    return true
   }
-  validatorEmail(){
-
-  }
-
-  validatorPhone(){
-
-  }
-  validatorPassword() {
-
+  validatorEmail(type){
+    return true
   }
 
-  validatorLogin(){
+  validatorPhone(type){
+    return true
+  }
+  validatorPassword(type) {
+    return true
+  }
 
+  validatorLogin(type){
+    return true
   }
 
 }

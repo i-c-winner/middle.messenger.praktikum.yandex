@@ -15,13 +15,15 @@ const templates={
           placeholder: "Имя",
           type: 'text',
           name: 'name',
-          class: "form__input-box"
+          class: "form__input-box",
+          error: 'Используйте латинские или русские буквы',
         },
         {
           placeholder: "Пароль",
           type: 'text',
           name: 'password',
-          class: "form__input-box"
+          class: "form__input-box",
+          error: 'Используйте латинские или русские буквы',
         }
       ],
     buttons: [
@@ -48,36 +50,42 @@ const templates={
     inputs: [
       {
         placeholder: "Почта",
+        error: 'Введите правильный адрес email',
         type: 'email',
         name: 'email',
         class: "form__input-box"
       },
       {
         placeholder: "Логин",
+        error: 'Используйте латинские или русские буквы',
         type: 'text',
         name: 'login',
         class: "form__input-box"
       },
       {
         placeholder: "Имя",
+        error: 'Используйте латинские или русские буквы',
         type: 'text',
         name: 'name',
         class: "form__input-box"
       },
       {
         placeholder: "Фамилия",
+        error: 'Используйте латинские или русские буквы',
         type: 'text',
         name: 'second_name',
         class: "form__input-box"
       },
       {
         placeholder: "Телефон",
+        error: 'Введите телефон',
         type: 'phone',
         name: 'phone',
         class: "form__input-box"
       },
       {
         placeholder: "Пароль",
+        error: 'Введите правильный пароль',
         type: 'password',
         name: 'password',
         class: "form__input-box"

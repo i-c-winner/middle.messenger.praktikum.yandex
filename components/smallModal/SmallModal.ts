@@ -3,6 +3,7 @@ import {render} from "lit";
 import {SMALLMODALID} from '../../static/constants'
 
 class SmallModal {
+  private id: string;
 
   create(props){
     const modal=document.createElement('div')
