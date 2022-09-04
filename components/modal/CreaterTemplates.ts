@@ -2,6 +2,8 @@ import {html} from "lit";
 import tmpl_input from "../../tamplates/tmpl_input";
 import tmpl_button from "../../tamplates/tmpl_button";
 import tmpl_text from "../../tamplates/tmpl_text";
+import Validator from "../../utils/Validator";
+
 
 class CreaterTemplates{
   private inputsName: [...string[]];
@@ -16,7 +18,7 @@ class CreaterTemplates{
   constructor(props) {
     this.inputsName=[]
     this.buttons=[]
-
+    this.validator=new Validator()
   }
   createTemplate(source){
     return html`
@@ -66,6 +68,11 @@ class CreaterTemplates{
       form[name].addEventListener('blur', (event)=>event.target.parentNode.style='none')
     })
   }
+
+  validationAll(){
+    this.validator.validationAll(this.inputsName)
+  }
+
 }
 
 export default CreaterTemplates

@@ -33,8 +33,9 @@ function MediatorModal(){
         if (button.clickType==='changeModal'){
           this.update(button.target)
         } else {
-          console.log(`/pages/${button.target}`)
-          window.location.href=`/pages/${button.target}.html`
+          console.log(buttons)
+          createrTemplates.validationAll()
+          // window.location.href=`/pages/${button.target}.html`
         }
       })
     })
