@@ -35,7 +35,7 @@ class Validator {
     return true
   }
   validatorEmail(element){
-    return true
+    return false
   }
 
   validatorPhone(element){

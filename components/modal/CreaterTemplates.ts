@@ -48,20 +48,32 @@ class CreaterTemplates{
 
   createInputsListeners(){
     const form=document.forms[0]
+
     this.inputsName.map(name=>{
-      form[name].value=''
+      const error=document.getElementById(`${name}_error`)
+      this.clearInputField(form, name, error)
       form[name].addEventListener('focus', (event)=>{
-        console.dir(event.target)
-        validator.oneValidator(name)
+        if (validator.oneValidator(name)) {
+          this.toogle(error, true)
+        } else {
+          this.toogle(error, false)
+        }
         event.target.parentNode.style="border: 1px solid blue"
       })
       form[name].addEventListener('blur', (event)=>{
-        validator.oneValidator(name)
+        if (validator.oneValidator(name)) {
+          this.toogle(error, true)
+        } else {
+          this.toogle(error, false)
+        }
         event.target.parentNode.style='none'
       })
       form[name].addEventListener('input', ()=>{
-        const element=document.getElementById(`${name}_error`)
-        element.classList.add('errorOP')
+        if (validator.oneValidator(name)) {
+          this.toogle(error, true)
+        } else {
+          this.toogle(error, false)
+        }
         validator.oneValidator(name)
       })
     })
@@ -70,7 +82,20 @@ class CreaterTemplates{
   validationAll(){
     return  this.validator.validationAll(this.inputsName)
   }
-
+  clearInputField(form, name,error){
+    form[name].value=''
+    error.parentNode.classList.remove('form__error_enable')
+    error.parentNode.classList.add('form__error_disable')
+  }
+  toogle(error, state){
+    if (state) {
+      error.parentNode.classList.add('form__error_enable')
+      error.parentNode.classList.remove('form__error_disable')
+    } else {
+      error.parentNode.classList.remove('form__error_enable')
+      error.parentNode.classList.add('form__error_disable')
+    }
+  }
 }
 
 export default CreaterTemplates

@@ -64,6 +64,14 @@
       color: red;
       bottom: -15px;
       text-align: left;
+
+      &_disable{
+        display: block;
+      }
+
+      &_enable {
+        display: none;
+      }
     }
   }
 }
