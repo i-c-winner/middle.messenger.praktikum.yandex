@@ -15,12 +15,14 @@ class CreaterTemplates{
     id:string
       }[]
   ]
+  private validator: any;
   constructor(props) {
-    this.inputsName=[]
-    this.buttons=[]
+
     this.validator=new Validator()
   }
   createTemplate(source){
+    this.inputsName=[]
+    this.buttons=[]
     return html`
       ${source.texts.map(text=>{
     return html`${tmpl_text({
@@ -70,7 +72,7 @@ class CreaterTemplates{
   }
 
   validationAll(){
-    this.validator.validationAll(this.inputsName)
+    return  this.validator.validationAll(this.inputsName)
   }
 
 }

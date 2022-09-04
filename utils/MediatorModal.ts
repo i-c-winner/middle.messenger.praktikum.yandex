@@ -29,22 +29,28 @@ function MediatorModal(){
   this.setButtonsListeners= function (buttons){
     buttons.map(button=>{
       const target=document.getElementById(button.id)
-      target.addEventListener('click', ()=>{
-        if (button.clickType==='changeModal'){
-          this.update(button.target)
-        } else {
-          console.log(buttons)
-          createrTemplates.validationAll()
-          // window.location.href=`/pages/${button.target}.html`
-        }
-      })
+      const update=this.update
+      target.addEventListener('click', this.hadlerButtonsClick.bind({
+        update,
+        button
+      }))
     })
   }
-  this.update=function(name){
+  this.update=(name)=>{
     const template=this.getTemplate(name)
     this.modal.dispatchComponentDidUpdate(template)
     createrTemplates.createInputsListeners()
-    this.setButtonsListeners(createrTemplates.getButtons())
+    // this.setButtonsListeners(createrTemplates.getButtons())/
+  }
+
+  this.hadlerButtonsClick=function (update, button){
+    if (this.button.clickType==='changeModal'){
+      this.update(this.button.target)
+    } else {
+      console.log(createrTemplates.validationAll())
+
+      // window.location.href=`/pages/${button.target}.html`
+    }
   }
 }
 
