@@ -1,13 +1,15 @@
 import ChatsBox from '../components/Chats-box';
-import {html, render} from 'lit'
-import tmpl_text from '../tamplates/tmpl_text'
-import tmpl_img from '../tamplates/tmpl_image'
-const imageMenu = require('../static/images/munePoint.png')
-const clip = require('../static/images/clip.png')
-const array=require('../static/images/array.png')
+import {html, render} from 'lit';
+import tmpl_text from '../tamplates/tmpl_text';
+import tmpl_img from '../tamplates/tmpl_image';
+const imageMenu = require('../static/images/munePoint.png');
+const clip = require('../static/images/clip.png');
+const array=require('../static/images/array.png');
+
 import SmallModal from '../components/smallModal/SmallModal';
-import chatsList from '../static/chatsList'
-import {SMALLMODALID} from '../static/constants'
+import chatsList from '../static/chatsList';
+import {SMALLMODALID} from '../static/constants';
+
 
 
 createChatsSection()
@@ -101,6 +103,7 @@ function createrMessagesBody(page){
 function createFooter(page) {
   const footer=document.createElement('div')
   footer.classList.add('footer')
+  footer.id='footer'
   const element=html`
     ${tmpl_img({
     path: clip,
@@ -120,8 +123,8 @@ function createFooter(page) {
   function footerGoLink() {
     const smallModal= new SmallModal()
     smallModal.create({
-      parentId: 'header',
-      classes: ['small-modal', 'small-modal_header'],
+      parentId: 'footer',
+      classes: ['small-modal', 'small-modal_footer'],
       type: SMALLMODALID.FOOTER_BUTTON
     })
   }

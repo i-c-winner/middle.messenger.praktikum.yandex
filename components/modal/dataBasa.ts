@@ -1,5 +1,8 @@
 const plusIcon = require('../../static/images/plus.png')
 const minusIcon = require('../../static/images/minus.png')
+const fileIcon=require ('../../static/images/file.png');
+const mediaIcon = require ('../../static/images/media.png');
+const locationIcon = require('../../static/images/location.png');
 const templates={
   login: {
     texts:[{
@@ -113,7 +116,25 @@ const templates={
     }],
     inputs: [],
     buttons: []
+  },
+  footerButton: {
+    items: [
+      {
+        text: "Добавить видео или фото",
+        imgPath: mediaIcon,
+      },
+      {
+        text: "Добавить файл",
+        imgPath: fileIcon,
+      },
+      {
+        text: "Локация",
+        imgPath: locationIcon,
+      }
+    ]
+
   }
+
 }
 
 export default templates

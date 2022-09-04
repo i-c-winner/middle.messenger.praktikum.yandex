@@ -8,26 +8,44 @@ import tmpl_text from "../../tamplates/tmpl_text";
 function createTemplate(id){
   switch (id) {
   case SMALLMODALID.HEADER_BUTTON :
-    return html` <div class="header__list">
+    return html` <ul class="list header__list">
       
         ${templates.headerButton.items.map(item=>{
     return html`
-      <div class="header__item">
+      <li class="modal-item modal-item_header">
         ${tmpl_image({
     path: item.imgPath,
-    class: 'header__image'
+    class: 'modal-img modal-img_header'
   })}
         ${tmpl_text({
     text: item.text,
     classWrapper: 'header__text'
   })}
-      </div>    
+      </li>    
     `
   })}
-    </div>   
+    </ul>   
             `
   case SMALLMODALID.FOOTER_BUTTON:
-    return html`<div>ddd</div>`
+    return html`
+        <ul class="list footer__list">
+            ${templates.footerButton.items.map(item=>{
+    return html`
+<li class="modal-item modal-item_footer">
+    ${tmpl_image({
+    path: item.imgPath,
+    class: 'modal-img modal-img_footer'
+  })}
+    ${tmpl_text({
+    text: item.text,
+    classWrapper: 'footer__text'
+  })}
+</li>
+`
+  })} 
+        </ul>
+   
+    `
   }
 }
 

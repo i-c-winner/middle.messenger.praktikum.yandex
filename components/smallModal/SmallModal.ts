@@ -5,9 +5,8 @@ import {SMALLMODALID} from '../../static/constants'
 class SmallModal {
 
   create(props){
-    const template=this._getTemplate(props.type)
     const modal=document.createElement('div')
-    modal.id=SMALLMODALID.HEADER_BUTTON
+    const template=this._getTemplate.bind(modal)(props.type)
     props.classes.map(classitem=>{
       modal.classList.add(classitem)
     })
@@ -17,8 +16,15 @@ class SmallModal {
   }
 
   _getTemplate(type){
-    if (type===SMALLMODALID.HEADER_BUTTON) return createTemplate(SMALLMODALID.HEADER_BUTTON)
-    if (type===SMALLMODALID.FOOTER_BUTTON) return createTemplate(SMALLMODALID.FOOTER_BUTTON)
+    if (type===SMALLMODALID.HEADER_BUTTON){
+      console.log(this)
+      this.id=SMALLMODALID.HEADER_BUTTON
+      return createTemplate(SMALLMODALID.HEADER_BUTTON)
+    }
+    if (type===SMALLMODALID.FOOTER_BUTTON) {
+      this.id=SMALLMODALID.FOOTER_BUTTON
+      return createTemplate(SMALLMODALID.FOOTER_BUTTON)
+    }
   }
 }
 
