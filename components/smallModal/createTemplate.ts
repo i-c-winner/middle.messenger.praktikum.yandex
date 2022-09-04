@@ -26,6 +26,8 @@ function createTemplate(id){
   })}
     </div>   
             `
+  case SMALLMODALID.FOOTER_BUTTON:
+    return html`<div>ddd</div>`
   }
 }
 

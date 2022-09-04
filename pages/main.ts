@@ -7,9 +7,7 @@ const clip = require('../static/images/clip.png')
 const array=require('../static/images/array.png')
 import SmallModal from '../components/smallModal/SmallModal';
 import chatsList from '../static/chatsList'
-import tmpl_input from "../tamplates/tmpl_input";
-import tmpl_button from "../tamplates/tmpl_button";
-import tmpl_image from "../tamplates/tmpl_image";
+import {SMALLMODALID} from '../static/constants'
 
 
 createChatsSection()
@@ -46,15 +44,19 @@ ${tmpl_img({path: imageMenu, click: clickHeaderButton, class: 'header__button'})
     const smallModal= new SmallModal()
     smallModal.create({
       parentId: 'header',
-      classes: ['small-modal', 'small-modal_header']
+      classes: ['small-modal', 'small-modal_header'],
+      type: SMALLMODALID.HEADER_BUTTON
     })
   }
 }
 
 function createrMessagesBody(page){
-  document.body.addEventListener('keydown',()=>{
-    const element=document.querySelector('.small-modal')
-    if (element) element.remove()
+  document.body.addEventListener('keydown',(event)=>{
+    if (event.key==='Escape'){
+      const element=document.querySelector('.small-modal')
+      if (element) element.remove()
+    }
+
   })
 
   const messages=document.createElement('div')
@@ -102,19 +104,25 @@ function createFooter(page) {
   const element=html`
     ${tmpl_img({
     path: clip,
-    class: 'footer__attache'
+    class: 'footer__attache',
+    click: footerGoLink  
   })}
     <input name="message" class="footer__input" type="text"/>
     ${tmpl_img({
     path: array,
     class: 'footer__link',
-    click: footerGoLink
+    
   })}
     `
   render(element, footer)
   page.appendChild(footer)
 
   function footerGoLink() {
-    console.log('footer link')
+    const smallModal= new SmallModal()
+    smallModal.create({
+      parentId: 'header',
+      classes: ['small-modal', 'small-modal_header'],
+      type: SMALLMODALID.FOOTER_BUTTON
+    })
   }
 }

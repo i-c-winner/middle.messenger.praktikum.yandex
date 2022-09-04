@@ -27,7 +27,8 @@ const constanst={
 }
 
 const SMALLMODALID={
-  HEADER_BUTTON: 'header-button'
+  HEADER_BUTTON: 'header-button',
+  FOOTER_BUTTON: 'footer-button'
 }
 
 export {SMALLMODALID}
