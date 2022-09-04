@@ -8,13 +8,6 @@ import Validator from "../../utils/Validator";
 class CreaterTemplates{
   private inputsName: [...string[]];
 
-  private buttons: [
-      ...{
-      clickType: string,
-      target: string,
-    id:string
-      }[]
-  ]
   private validator: any;
   constructor(props) {
 
@@ -22,7 +15,6 @@ class CreaterTemplates{
   }
   createTemplate(source){
     this.inputsName=[]
-    this.buttons=[]
     return html`
       ${source.texts.map(text=>{
     return html`${tmpl_text({
@@ -38,31 +30,13 @@ class CreaterTemplates{
       class: input.class,
       name: input.name
     })}`
-  })}<div class="form__buttons">
-             ${source.buttons.map(button=>{
-    this.buttons.push({
-      id:button.id,
-      clickType: button.clickType,
-      target: button.target
-    })
-    return html`${
-      tmpl_button({
-        text: button.text,
-        class: 'form__button',
-        id: button.id,
-        click: this.stopReset
-      })
-    }`
-  })}  
-           </div>       
+  })}    
         `
   }
   stopReset(event){
     event.preventDefault()
   }
-  getButtons() {
-    return this.buttons
-  }
+
   createInputsListeners(){
     const form=document.forms[0]
     this.inputsName.map(name=>{

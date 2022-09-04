@@ -4,7 +4,7 @@ const fileIcon=require ('../../static/images/file.png');
 const mediaIcon = require ('../../static/images/media.png');
 const locationIcon = require('../../static/images/location.png');
 const templates={
-  login: {
+  loginIn: {
     texts:[{
       text: "Авторизация",
       classWrapper: 'form__title'

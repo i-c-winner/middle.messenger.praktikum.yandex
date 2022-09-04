@@ -1,6 +1,9 @@
 import Modal from "../components/modal/Modal";
 import templates from "../components/modal/dataBasa";
 import CreaterTemplates from "../components/modal/CreaterTemplates";
+import {html} from 'lit'
+import tmpl_button from "../tamplates/tmpl_button";
+
 
 
 const createrTemplates=new CreaterTemplates({})
@@ -12,51 +15,46 @@ function MediatorModal(){
       classes: ['form'],
       parentId: "root-modal",
     })
-    this.dispatch('login')
+    this.dispatch('loginIn')
   }
 
   this.dispatch=function(templateName){
-    const template=this.getTemplate(templateName)
+    const template=this._getTemplate(templateName)
     this.modal.dispatchComponentDidMount(template)
     createrTemplates.createInputsListeners()
-    this.setButtonsListeners(createrTemplates.getButtons())
   }
-  this.getTemplate=function (type){
+  this._getTemplate=function (type){
     const source=templates[type]
-    return createrTemplates.createTemplate(source)
+
+    return html`
+      ${ createrTemplates.createTemplate(source)}
+      <div class="form__buttons">
+     ${tmpl_button({
+    id: 'login_button',
+    class: 'form__button',
+    click: this.clickLogin,
+    text: 'Войти'
+  })}
+        ${tmpl_button({
+    id: 'registration',
+    class: 'form__button',
+    click: this.clickRegistration.bind(this),
+    text: type==='loginIn'? 'Нет акаунта?': 'Регистрация'
+  })}
+      </div>
+    `
   }
 
-  this.setButtonsListeners= function (buttons){
-
-    buttons.map(button=>{
-      this.target=document.getElementById(button.id)
-      const update=this.update
-      this.target.addEventListener('click', this.hadlerButtonsClick.bind({
-        update,
-        button,
-      }))
-    })
-  }
   this.update=(name)=>{
-    this.target=document.getElementById(button.id)
-    this.target.removeEventListener('click', this.handlerButtonsClick)
-    const template=this.getTemplate(name)
+    const template=this._getTemplate(name)
     this.modal.dispatchComponentDidUpdate(template)
     createrTemplates.createInputsListeners()
-    this.setButtonsListeners(createrTemplates.getButtons())
+  }
+  this.clickRegistration=function (event){
+    event.preventDefault()
+    this.update('registration')
   }
 
-  this.hadlerButtonsClick=function (){
-    console.log(this.button)
-    if (this.button.clickType==='changeModal'){
-      this.update(this.button.target)
-
-    } else {
-      console.log(createrTemplates.validationAll())
-
-      // window.location.href=`/pages/${button.target}.html`
-    }
-  }
 }
 
 export default MediatorModal
