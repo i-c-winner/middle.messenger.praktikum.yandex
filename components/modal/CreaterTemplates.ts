@@ -34,6 +34,7 @@ class CreaterTemplates{
   })}
         ${tmpl_text({
     text: input.error,
+    id: `${input.name}_error`,
     classWrapper: 'form__error form__error_enable'
   })}        
       </div>
@@ -50,6 +51,7 @@ class CreaterTemplates{
     this.inputsName.map(name=>{
       form[name].value=''
       form[name].addEventListener('focus', (event)=>{
+        console.dir(event.target)
         validator.oneValidator(name)
         event.target.parentNode.style="border: 1px solid blue"
       })
@@ -58,6 +60,8 @@ class CreaterTemplates{
         event.target.parentNode.style='none'
       })
       form[name].addEventListener('input', ()=>{
+        const element=document.getElementById(`${name}_error`)
+        element.classList.add('errorOP')
         validator.oneValidator(name)
       })
     })
