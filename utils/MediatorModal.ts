@@ -27,25 +27,30 @@ function MediatorModal(){
   }
 
   this.setButtonsListeners= function (buttons){
+
     buttons.map(button=>{
-      const target=document.getElementById(button.id)
+      this.target=document.getElementById(button.id)
       const update=this.update
-      target.addEventListener('click', this.hadlerButtonsClick.bind({
+      this.target.addEventListener('click', this.hadlerButtonsClick.bind({
         update,
-        button
+        button,
       }))
     })
   }
   this.update=(name)=>{
+    this.target=document.getElementById(button.id)
+    this.target.removeEventListener('click', this.handlerButtonsClick)
     const template=this.getTemplate(name)
     this.modal.dispatchComponentDidUpdate(template)
     createrTemplates.createInputsListeners()
-    // this.setButtonsListeners(createrTemplates.getButtons())/
+    this.setButtonsListeners(createrTemplates.getButtons())
   }
 
-  this.hadlerButtonsClick=function (update, button){
+  this.hadlerButtonsClick=function (){
+    console.log(this.button)
     if (this.button.clickType==='changeModal'){
       this.update(this.button.target)
+
     } else {
       console.log(createrTemplates.validationAll())
 
