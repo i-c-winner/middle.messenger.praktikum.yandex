@@ -48,31 +48,34 @@ class CreaterTemplates{
 
   createInputsListeners(){
     const form=document.forms[0]
-
     this.inputsName.map(name=>{
       const error=document.getElementById(`${name}_error`)
-      this.clearInputField(form, name, error)
+      this.clearInputField({
+        form,
+        name,
+        error
+      })
       form[name].addEventListener('focus', (event)=>{
         if (validator.oneValidator(name)) {
-          this.toogle(error, true)
+          this.toogleOn(error)
         } else {
-          this.toogle(error, false)
+          this.toogleOff(error)
         }
         event.target.parentNode.style="border: 1px solid blue"
       })
       form[name].addEventListener('blur', (event)=>{
         if (validator.oneValidator(name)) {
-          this.toogle(error, true)
+          this.toogleOn(error)
         } else {
-          this.toogle(error, false)
+          this.toogleOff(error)
         }
         event.target.parentNode.style='none'
       })
       form[name].addEventListener('input', ()=>{
         if (validator.oneValidator(name)) {
-          this.toogle(error, true)
+          this.toogleOn(error)
         } else {
-          this.toogle(error, false)
+          this.toogleOff(error)
         }
         validator.oneValidator(name)
       })
@@ -82,19 +85,18 @@ class CreaterTemplates{
   validationAll(){
     return  this.validator.validationAll(this.inputsName)
   }
-  clearInputField(form, name,error){
-    form[name].value=''
+  clearInputField(params){
+    params.form[params.name].value=''
+    this.toogleOff(params.error)
+  }
+  toogleOn(error){
+    error.parentNode.classList.add('form__error_enable')
+    error.parentNode.classList.remove('form__error_disable')
+  }
+  
+  toogleOff(error){
     error.parentNode.classList.remove('form__error_enable')
     error.parentNode.classList.add('form__error_disable')
-  }
-  toogle(error, state){
-    if (state) {
-      error.parentNode.classList.add('form__error_enable')
-      error.parentNode.classList.remove('form__error_disable')
-    } else {
-      error.parentNode.classList.remove('form__error_enable')
-      error.parentNode.classList.add('form__error_disable')
-    }
   }
 }
 

@@ -28,14 +28,14 @@ class Validator {
   }
 
   validatorName(element){
-    return false
+    return true
   }
 
   validatorSecondName(element) {
     return true
   }
   validatorEmail(element){
-    return false
+    return true
   }
 
   validatorPhone(element){
