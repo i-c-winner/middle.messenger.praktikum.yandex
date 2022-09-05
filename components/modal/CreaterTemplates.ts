@@ -35,7 +35,7 @@ class CreaterTemplates{
         ${tmpl_text({
     text: input.error,
     id: `${input.name}_error`,
-    classWrapper: 'form__error form__error_enable'
+    classWrapper: 'form__error'
   })}        
       </div>
     `
@@ -87,7 +87,7 @@ class CreaterTemplates{
   }
   clearInputField(params){
     params.form[params.name].value=''
-    this.toogleOff(params.error)
+    this.toogleOn(params.error)
   }
   toogleOn(error){
     error.parentNode.classList.add('form__error_enable')

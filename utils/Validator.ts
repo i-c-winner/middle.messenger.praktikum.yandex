@@ -28,14 +28,18 @@ class Validator {
   }
 
   validatorName(element){
-    return true
+    const regName=new RegExp('^([A-Z,А-Я])([a-z,-,A-Z,А-Я,а-я])+')
+    return regName.test(element.value)
   }
 
   validatorSecondName(element) {
     return true
   }
   validatorEmail(element){
-    return true
+    console.log(element.value)
+    const regEmail=new RegExp('^([A-Z]+|[a-z]+)@([A-Z]+|[a-z]+)\.([A-Z]+|[a-z]+)')
+    console.log(regEmail.test(element.value))
+    return false
   }
 
   validatorPhone(element){
