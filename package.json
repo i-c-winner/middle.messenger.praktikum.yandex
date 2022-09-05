@@ -13,6 +13,7 @@
     "node": ">= 16"
   },
   "scripts": {
+    "start": "npm run build && node server.js",
     "stylefix": "stylelint --fix \"**/*.scss\"",
     "style": "stylelint \"**/*.scss\"",
     "eslint": "eslint  .",
