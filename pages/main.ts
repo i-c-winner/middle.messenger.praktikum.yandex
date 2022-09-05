@@ -5,13 +5,13 @@ import tmpl_img from '../tamplates/tmpl_image';
 const imageMenu = require('../static/images/munePoint.png');
 const clip = require('../static/images/clip.png');
 const array=require('../static/images/array.png');
-
+import Validator from "../utils/Validator";
 import SmallModal from '../components/smallModal/SmallModal';
 import chatsList from '../static/chatsList';
 import {SMALLMODALID} from '../static/constants';
 
 
-
+const validator=new Validator()
 createChatsSection()
 function createChatsSection(){
   const chatsBox=new ChatsBox({
@@ -114,6 +114,7 @@ function createFooter(page) {
     ${tmpl_img({
     path: array,
     class: 'footer__link',
+    click: sendMessage
     
   })}
     `
@@ -127,5 +128,13 @@ function createFooter(page) {
       classes: ['small-modal', 'small-modal_footer'],
       type: SMALLMODALID.FOOTER_BUTTON
     })
+  }
+
+  function sendMessage(){
+    if (validator.oneValidator('message')){
+      const element:HTMLInputElement=document.querySelector('.footer__input')
+      console.info('Сообщение: ', element.value, ' было отправленно')
+      element.value=''
+    }
   }
 }

@@ -14,6 +14,8 @@ class Validator {
       return this.validatorPassword(element[name])
     case 'login':
       return this.validatorLogin(element[name])
+    case 'message':
+      return this.validatorMessage()
 
     default: return true
 
@@ -56,6 +58,12 @@ class Validator {
   validatorLogin(element){
     const regLogin=new RegExp('^([a-z,-,A-Z,А-Я,а-я]){3,20}$')
     return regLogin.test(element.value)
+  }
+
+  validatorMessage(){
+    const inputField: HTMLInputElement=document.querySelector('.footer__input')
+    const regMessage=new RegExp('.+')
+    return regMessage.test(inputField.value)
   }
 
 }
