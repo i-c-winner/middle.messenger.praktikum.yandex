@@ -47,6 +47,10 @@
       margin-top: 10px;
       background-color: none;
 
+      &_disable {
+        display: none;
+      }
+
       &:hover {
         cursor: pointer;
       }

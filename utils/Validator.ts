@@ -40,14 +40,12 @@ class Validator {
     return regSecondName.test(element.value)
   }
   validatorEmail(element){
-    console.log(element.value)
     const regEmail=new RegExp('^\\S+@([A-Z]+|[a-z]+)[+.]([A-Z]+|[a-z]+)$')
     return regEmail.test(element.value)
   }
 
   validatorPhone(element){
     const RegPhone= new RegExp('^\\+?[0-9]{10,15}$')
-    console.log(RegPhone.test(element.value), element.value)
     return RegPhone.test(element.value)
   }
   validatorPassword(element) {

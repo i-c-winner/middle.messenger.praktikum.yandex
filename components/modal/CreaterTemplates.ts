@@ -81,7 +81,9 @@ class CreaterTemplates{
       })
     })
   }
-
+  getInputsName(){
+    return this.inputsName
+  }
   validationAll(){
     return  this.validator.validationAll(this.inputsName)
   }

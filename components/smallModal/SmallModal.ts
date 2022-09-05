@@ -1,4 +1,4 @@
-import createTemplate from "./createTemplate";
+import createTemplate from "./CreateTemplate";
 import {render} from "lit";
 import {SMALLMODALID} from '../../static/constants'
 

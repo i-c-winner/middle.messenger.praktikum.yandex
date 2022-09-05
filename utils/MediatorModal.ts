@@ -29,14 +29,14 @@ function MediatorModal(){
       <div class="form__buttons">
      ${tmpl_button({
     id: 'login_button',
-    class: 'form__button',
+    class: type==='loginIn'? 'form__button': 'form__button form__button_disable',
     click: this.clickLogin,
     text: 'Войти'
   })}
         ${tmpl_button({
     id: 'registration',
     class: 'form__button',
-    click: this.clickRegistration.bind(this),
+    click: type==='loginIn'?this.clickRegistration.bind(this): this.registration,
     text: type==='loginIn'? 'Нет акаунта?': 'Регистрация'
   })}
       </div>
@@ -56,6 +56,19 @@ function MediatorModal(){
   this.clickLogin=function (event){
     event.preventDefault()
     if (createrTemplates.validationAll()) window.location.href='/pages/main.html'
+  }
+
+  this.registration=function(event){
+    event.preventDefault()
+    if (createrTemplates.validationAll()) {
+      const inputFields=createrTemplates.getInputsName()
+      const form=document.forms[0]
+      inputFields.map(name=> {
+        console.info(name, ':', form[name].value)
+      })
+
+
+    }
 
   }
 }

@@ -43,7 +43,7 @@ const templates={
   },
   registration: {
     texts:[{
-      text: "Авторизация",
+      text: "Регистрация",
       classWrapper: 'form__title'
 
     }],
