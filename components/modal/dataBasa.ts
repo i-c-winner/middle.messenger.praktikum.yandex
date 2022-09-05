@@ -23,7 +23,7 @@ const templates={
           type: 'text',
           name: 'password',
           class: "form__input-box",
-          error: 'Используйте латинские или русские буквы',
+          error: 'Латинские, первая заглавная, цифры',
         }
       ],
     buttons: [
