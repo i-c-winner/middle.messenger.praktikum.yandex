@@ -1,3 +1,5 @@
+const iconPhoto = require ('../static/images/photo.png')
+
 const chatsList=[
   {
     text: `Вот вам яркий пример современных тенденций — консультация с
@@ -15,7 +17,7 @@ const chatsList=[
     text: 'Отлично',
     time: ()=>new Date,
     type: 'outer',
-    img: ''
+    img: iconPhoto
   },
   {
     text: `Вот вам яркий пример современных тенденций — консультация с
@@ -39,7 +41,7 @@ const chatsList=[
         кластеры себе подобных.`,
     time: ()=>new Date,
     type: 'inner',
-    img: ''
+    img: iconPhoto
   },
   {
     text: 'Отлично',
