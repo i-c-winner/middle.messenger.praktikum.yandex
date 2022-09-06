@@ -1,13 +1,13 @@
 import EventBus from "./EventBus";
 import {Props} from "../utils/types";
-import {render} from "lit";
+import {render, TemplateResult} from "lit";
 
 
-class  AbstractComponent{
-  props:Props
+class AbstractComponent {
+  props: Props
   private element: HTMLElement
   init: Function
-  private EVENTS={
+  private EVENTS = {
     INIT: 'component-init',
     MOUNT: 'component-did-mount',
     RENDER: 'component-did-render',
@@ -15,34 +15,37 @@ class  AbstractComponent{
   }
   private eventBus: EventBus;
 
-  constructor(props:Props) {
-    this.eventBus=new EventBus()
-    this.props=props
+  constructor(props: Props) {
+    this.eventBus = new EventBus()
+    this.props = props
     this.props = this.getProps()
     this._registerEvents()
     this.eventBus.emit(this.EVENTS.INIT)
   }
-  _registerEvents(){
+
+  _registerEvents() {
     this.eventBus.on(this.EVENTS.INIT, this._init.bind(this))
     this.eventBus.on(this.EVENTS.MOUNT, this._componentDidMount.bind(this))
     this.eventBus.on(this.EVENTS.RENDER, this._render.bind(this))
     this.eventBus.on(this.EVENTS.UPDATE, this._componentDidUpdate.bind(this))
   }
-  componentDidMount(){
+
+  componentDidMount() {
     this.eventBus.emit(this.EVENTS.RENDER)
   }
 
-  dispatchComponentDidMount(template){
+  dispatchComponentDidMount(template: TemplateResult<1> | undefined){
+    console.log(template)
     this.eventBus.emit(this.EVENTS.MOUNT, template)
   }
-  _componentDidMount(template){
+  _componentDidMount(template: TemplateResult<1> | undefined){
     render(template, this.element)
   }
-  dispatchComponentDidUpdate(template){
+  dispatchComponentDidUpdate(template: TemplateResult<1> | undefined){
     this.eventBus.emit(this.EVENTS.UPDATE, template)
   }
 
-  _componentDidUpdate(template){
+  _componentDidUpdate(template: TemplateResult<1> | undefined){
     render(template, this.element)
   }
 
@@ -77,7 +80,8 @@ class  AbstractComponent{
 
   _render() {
     this._seterProps()
-    document.getElementById(this.props.parentId).appendChild(this.element)
+    const container=document.getElementById(this.props.parentId)
+    if (container!==null) container.appendChild(this.element)
   }
 
 
@@ -85,22 +89,23 @@ class  AbstractComponent{
     const eventBus=this.eventBus
     const EVENTS=this.EVENTS
     return new Proxy(this.props, {
-      get(target:Props, prop:string){
+      get(target, prop: never){
         if (!target[prop]){
           console.info('Попытка получить несуществующее свойство экземпляра')
         }
-        const value = target[prop];
+        const value:any = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set(target:Props, prop: string, value:never){
+      set(target:Props, prop: never, value:never){
         target[prop]=value
         eventBus.emit(EVENTS.RENDER)
         return true
       },
-      defineProperty(target: Props, prop: string | symbol, attributes: PropertyDescriptor): boolean {
+      defineProperty(target: Props, prop: never): boolean {
         if (!target[prop]) {
           return false
         } delete target[prop]
+        return true
       }
     })
 
