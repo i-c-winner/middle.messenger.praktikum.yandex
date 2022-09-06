@@ -18,14 +18,14 @@ class Fetch{
     })
   }
 
-  post (url: string) {
+  post (url: string, body: JSON) {
     const xhr=new XMLHttpRequest()
     xhr.open('POST', url)
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const formData= new FormData([])
-    xhr.send(formData)
+
+    xhr.send(body)
     return new Promise((resolve, reject)=>{
       xhr.onload=()=>{
         resolve(xhr)
