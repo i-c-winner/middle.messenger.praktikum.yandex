@@ -5,21 +5,19 @@ import {render} from "lit";
 
 class  AbstractComponent{
   props:Props
-  element: HTMLElement
+  private element: HTMLElement
   init: Function
-  container: Node|null
-  EVENTS={
+  private EVENTS={
     INIT: 'component-init',
     MOUNT: 'component-did-mount',
     RENDER: 'component-did-render',
     UPDATE: 'component-did-update',
   }
-  eventBus=new EventBus()
+  private eventBus: EventBus;
 
   constructor(props:Props) {
     this.eventBus=new EventBus()
     this.props=props
-    this.container=null
     this.props = this.getProps()
     this._registerEvents()
     this.eventBus.emit(this.EVENTS.INIT)
