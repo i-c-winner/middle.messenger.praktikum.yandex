@@ -23,7 +23,7 @@ const templates={
           type: 'text',
           name: 'password',
           class: "form__input-box",
-          error: 'Латинские, первая заглавная, цифры',
+          error: 'От 8 до 40 символов, есть заглавная и цифра',
         }
       ],
     buttons: [
@@ -85,7 +85,7 @@ const templates={
       },
       {
         placeholder: "Пароль",
-        error: 'Введите правильный пароль',
+        error: 'От 8 до 40 символов, есть заглавная и цифра',
         type: 'password',
         name: 'password',
         class: "form__input-box"

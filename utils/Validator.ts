@@ -50,8 +50,11 @@ class Validator {
     return RegPhone.test(element.value)
   }
   _validatorPassword(element:HTMLInputElement) {
-    const regPassword=new RegExp('^([A-Z, a-z,0-9]+)?[0-9]?([A-Z, a-z,0-9]+)?[A-Z]([A-Z, a-z,0-9]+)?[0-9]([A-Z, a-z,0-9]+)?')
-    return regPassword.test(element.value)
+    const regPassword=new RegExp('^.*[0-9]*?.*[A-Z,a-z]+.*[0-9]+.*$')
+    if (element.value.length>7&&element.value.length<41){
+      return regPassword.test(element.value)
+    }
+    return false
   }
 
   _validatorLogin(element:HTMLInputElement){
