@@ -7,7 +7,7 @@ class AbstractComponent {
   props: Props
   private element: HTMLElement
   init: Function
-  private EVENTS = {
+  private static EVENTS = {
     INIT: 'component-init',
     MOUNT: 'component-did-mount',
     RENDER: 'component-did-render',
@@ -20,29 +20,29 @@ class AbstractComponent {
     this.props = props
     this.props = this.getProps()
     this._registerEvents()
-    this.eventBus.emit(this.EVENTS.INIT)
+    this.eventBus.emit(AbstractComponent.EVENTS.INIT)
   }
 
   _registerEvents() {
-    this.eventBus.on(this.EVENTS.INIT, this._init.bind(this))
-    this.eventBus.on(this.EVENTS.MOUNT, this._componentDidMount.bind(this))
-    this.eventBus.on(this.EVENTS.RENDER, this._render.bind(this))
-    this.eventBus.on(this.EVENTS.UPDATE, this._componentDidUpdate.bind(this))
+    this.eventBus.on(AbstractComponent.EVENTS.INIT, this._init.bind(this))
+    this.eventBus.on(AbstractComponent.EVENTS.MOUNT, this._componentDidMount.bind(this))
+    this.eventBus.on(AbstractComponent.EVENTS.RENDER, this._render.bind(this))
+    this.eventBus.on(AbstractComponent.EVENTS.UPDATE, this._componentDidUpdate.bind(this))
   }
 
   componentDidMount() {
-    this.eventBus.emit(this.EVENTS.RENDER)
+    this.eventBus.emit(AbstractComponent.EVENTS.RENDER)
   }
 
   dispatchComponentDidMount(template: TemplateResult<1> | undefined){
     console.log(template)
-    this.eventBus.emit(this.EVENTS.MOUNT, template)
+    this.eventBus.emit(AbstractComponent.EVENTS.MOUNT, template)
   }
   _componentDidMount(template: TemplateResult<1> | undefined){
     render(template, this.element)
   }
   dispatchComponentDidUpdate(template: TemplateResult<1> | undefined){
-    this.eventBus.emit(this.EVENTS.UPDATE, template)
+    this.eventBus.emit(AbstractComponent.EVENTS.UPDATE, template)
   }
 
   _componentDidUpdate(template: TemplateResult<1> | undefined){
@@ -63,7 +63,7 @@ class AbstractComponent {
   }
   _init() {
     this.element=document.createElement(this.props.tagName)
-    this.eventBus.emit(this.EVENTS.RENDER)
+    this.eventBus.emit(AbstractComponent.EVENTS.RENDER)
   }
   _seterProps(){
     this._setClasses()
@@ -87,7 +87,7 @@ class AbstractComponent {
 
   getProps(){
     const eventBus=this.eventBus
-    const EVENTS=this.EVENTS
+    const EVENTS=AbstractComponent.EVENTS
     return new Proxy(this.props, {
       get(target, prop: never){
         if (!target[prop]){
