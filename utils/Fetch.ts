@@ -1,14 +1,11 @@
 class Fetch{
-  private fetch: XMLHttpRequest;
-  private xhr: XMLHttpRequest;
 
-
-  get(url){
+  get(url: string){
     const xhr=new XMLHttpRequest()
     xhr.open('GET',url)
     xhr.send()
     return new Promise((resolve, reject) =>{
-      xhr.onload=(e)=>{
+      xhr.onload=()=>{
         resolve(xhr)
       }
       xhr.onerror=(e=>{
@@ -21,7 +18,7 @@ class Fetch{
     })
   }
 
-  post (url) {
+  post (url: string) {
     const xhr=new XMLHttpRequest()
     xhr.open('POST', url)
 
@@ -30,7 +27,7 @@ class Fetch{
     const formData= new FormData([])
     xhr.send(formData)
     return new Promise((resolve, reject)=>{
-      xhr.onload=(e)=>{
+      xhr.onload=()=>{
         resolve(xhr)
       }
       xhr.onerror=(e=>{
@@ -43,13 +40,13 @@ class Fetch{
     })
   }
 
-  delete(url){
+  delete(url: string){
     const xhr=new XMLHttpRequest()
     xhr.open('DELETE', url)
 
     xhr.send()
     return new Promise((resolve, reject)=>{
-      xhr.onload=(e)=>{
+      xhr.onload=()=>{
         resolve(xhr)
       }
       xhr.onerror=(e=>{
@@ -62,16 +59,16 @@ class Fetch{
     })
   }
 
-  put(url){
+  put(url: string){
     const xhr=new XMLHttpRequest()
     xhr.open('PUT', url)
 
     xhr.send()
     return new Promise((resolve, reject)=>{
-      xhr.onload=(e)=>{
+      xhr.onload=()=>{
         resolve(xhr)
       }
-      xhr.onerror=(e=>{
+      xhr.onerror=((e: ProgressEvent)=>{
         reject({
           error:e,
           answer: xhr
