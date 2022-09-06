@@ -26,7 +26,7 @@ class Fetch{
     // @ts-ignore
 
     xhr.send(body)
-    return new Promise((resolve, reject)=>{
+    return new Promise((resolve: any, reject: any)=>{
       xhr.onload=()=>{
         resolve(xhr)
       }
@@ -45,7 +45,7 @@ class Fetch{
     xhr.open('DELETE', url)
 
     xhr.send()
-    return new Promise((resolve, reject)=>{
+    return new Promise((resolve: any, reject: any)=>{
       xhr.onload=()=>{
         resolve(xhr)
       }
@@ -64,7 +64,7 @@ class Fetch{
     xhr.open('PUT', url)
 
     xhr.send()
-    return new Promise((resolve, reject)=>{
+    return new Promise((resolve: any, reject: any)=>{
       xhr.onload=()=>{
         resolve(xhr)
       }
