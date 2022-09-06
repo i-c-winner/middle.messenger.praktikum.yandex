@@ -1,27 +1,29 @@
 class Validator {
-  oneValidator(name){
-    const element=document.forms[0]
+
+  oneValidator(name: string){
+    const element: HTMLInputElement=document.forms[0][name]
     switch (name) {
+
     case 'name':
-      return this.validatorName(element[name])
+      return this._validatorName(element)
     case 'second_name':
-      return this.validatorSecondName(element[name])
+      return this._validatorSecondName(element)
     case 'email':
-      return this.validatorEmail(element[name])
+      return this._validatorEmail(element)
     case 'phone':
-      return this.validatorPhone(element[name])
+      return this._validatorPhone(element)
     case 'password':
-      return this.validatorPassword(element[name])
+      return this._validatorPassword(element)
     case 'login':
-      return this.validatorLogin(element[name])
+      return this._validatorLogin(element)
     case 'message':
-      return this.validatorMessage()
+      return this._validatorMessage()
 
     default: return true
 
     }
   }
-  validationAll(inputs){
+  validationAll(inputs: [...string[]]){
     let flag=true
     inputs.map(input=>{
       if (!this.oneValidator(input)) flag=false
@@ -29,41 +31,41 @@ class Validator {
     return flag
   }
 
-  validatorName(element){
-    const regName=new RegExp('^[A-Z,a-z,0-9,-,_]+$')
-
+  _validatorName(element: HTMLInputElement){
+    const regName=new RegExp('^[A-Z, А-Я][A-Z,a-z,а-я,А-Я,0-9,-,_]+$')
     return regName.test(element.value)
   }
 
-  validatorSecondName(element) {
-    const regSecondName=new RegExp('^[A-Z,a-z,0-9,-,_]+$')
+  _validatorSecondName(element:HTMLInputElement) {
+    const regSecondName=new RegExp('^[A-Z, А-Я][A-Z,a-z,0-9,-,_]+$')
     return regSecondName.test(element.value)
   }
-  validatorEmail(element){
+  _validatorEmail(element:HTMLInputElement){
     const regEmail=new RegExp('^\\S+@([A-Z]+|[a-z]+)[+.]([A-Z]+|[a-z]+)$')
     return regEmail.test(element.value)
   }
 
-  validatorPhone(element){
+  _validatorPhone(element:HTMLInputElement){
     const RegPhone= new RegExp('^\\+?[0-9]{10,15}$')
     return RegPhone.test(element.value)
   }
-  validatorPassword(element) {
+  _validatorPassword(element:HTMLInputElement) {
     const regPassword=new RegExp('^([A-Z, a-z,0-9]+)?[0-9]?([A-Z, a-z,0-9]+)?[A-Z]([A-Z, a-z,0-9]+)?[0-9]([A-Z, a-z,0-9]+)?')
     return regPassword.test(element.value)
   }
 
-  validatorLogin(element){
+  _validatorLogin(element:HTMLInputElement){
     const regLogin=new RegExp('^([a-z,-,A-Z,А-Я,а-я]){3,20}$')
     return regLogin.test(element.value)
   }
 
-  validatorMessage(){
-    const inputField: HTMLInputElement=document.querySelector('.footer__input')
+  _validatorMessage(){
+    const inputField: HTMLInputElement | null=document.querySelector('.footer__input')
     const regMessage=new RegExp('.+')
-    return regMessage.test(inputField.value)
+    if (inputField!==null){
+      return regMessage.test(inputField?.value)
+    }return false
   }
-
 }
 
 export default Validator

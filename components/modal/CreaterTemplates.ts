@@ -47,22 +47,22 @@ class CreaterTemplates{
   }
 
   createInputsListeners(){
-    const form=document.forms[0]
-    this.inputsName.map(name=>{
+    const form:HTMLFormElement=document.forms[0]
+    this.inputsName.map((name:string)=>{
       const error=document.getElementById(`${name}_error`)
       this.clearInputField({
         form,
         name,
         error
       })
-      form[name].addEventListener('focus', (event)=>{
+      form[name].addEventListener('focus', ((event)=>{
         if (validator.oneValidator(name)) {
           this.toogleOn(error)
         } else {
           this.toogleOff(error)
         }
         event.target.parentNode.style="border: 1px solid blue"
-      })
+      }))
       form[name].addEventListener('blur', (event)=>{
         if (validator.oneValidator(name)) {
           this.toogleOn(error)

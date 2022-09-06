@@ -16,7 +16,7 @@ const templates={
           type: 'text',
           name: 'name',
           class: "form__input-box",
-          error: 'Используйте латинские или русские буквы',
+          error: 'Латинские, русские буквы, цифры _  первая буква заглавная',
         },
         {
           placeholder: "Пароль",
