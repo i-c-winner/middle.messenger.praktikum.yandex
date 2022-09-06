@@ -35,7 +35,6 @@ class AbstractComponent {
   }
 
   dispatchComponentDidMount(template: TemplateResult<1> | undefined){
-    console.log(template)
     this.eventBus.emit(AbstractComponent.EVENTS.MOUNT, template)
   }
   _componentDidMount(template: TemplateResult<1> | undefined){
