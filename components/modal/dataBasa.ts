@@ -57,7 +57,7 @@ const templates={
       },
       {
         placeholder: "Логин",
-        error: 'Используйте латинские или русские буквы',
+        error: 'Латинские буквы, цифры, - и _',
         type: 'text',
         name: 'login',
         class: "form__input-box"

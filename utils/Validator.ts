@@ -58,8 +58,11 @@ class Validator {
   }
 
   _validatorLogin(element:HTMLInputElement){
-    const regLogin=new RegExp('^([a-z,-,A-Z,А-Я,а-я]){3,20}$')
-    return regLogin.test(element.value)
+    const regLogin=new RegExp('^[a-z,A-Z,_,\\-,0-9]*[0-9]*[a-z,A-Z,_,\\-,0-9]*$')
+    if (element.value.length>2&&element.value.length<21){
+      return regLogin.test(element.value)
+    }
+    return false
   }
 
   _validatorMessage(){
