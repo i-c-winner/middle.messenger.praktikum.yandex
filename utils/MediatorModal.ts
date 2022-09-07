@@ -21,7 +21,7 @@ function MediatorModal(){
     this.modal.dispatchComponentDidMount(template)
     createrTemplates.createInputsListeners()
   }
-  this._getTemplate=function (type: string){
+  this._getTemplate=function (type: keyof typeof templates){
     const source=templates[type]
 
     return html`
@@ -43,22 +43,22 @@ function MediatorModal(){
     `
   }
 
-  this.update=(name)=>{
+  this.update=(name: string)=>{
     const template=this._getTemplate(name)
     this.modal.dispatchComponentDidUpdate(template)
     createrTemplates.createInputsListeners()
   }
-  this.clickRegistration=function (event){
+  this.clickRegistration=function (event: Event){
     event.preventDefault()
     this.update('registration')
   }
 
-  this.clickLogin=function (event){
+  this.clickLogin=function (event: Event){
     event.preventDefault()
     if (createrTemplates.validationAll()) window.location.href='/pages/main.html'
   }
 
-  this.registration=function(event){
+  this.registration=function(event: Event){
     event.preventDefault()
     if (createrTemplates.validationAll()) {
       const inputFields=createrTemplates.getInputsName()
