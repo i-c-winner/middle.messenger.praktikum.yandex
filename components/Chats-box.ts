@@ -14,6 +14,7 @@ class ChatsBox extends AbstractComponent<ChatsBoxProps>{
   constructor(props: ChatsBoxProps) {
     super(props)
   }
+
   dispatchComponentDidMount() {
     this.chats=new Chats({
       tagName: 'div',

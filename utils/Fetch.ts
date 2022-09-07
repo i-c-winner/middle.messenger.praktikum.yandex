@@ -25,7 +25,6 @@ class Fetch{
         reject({
           error:e,
           answer: this.xhr
-
         })
       })
     })
@@ -46,7 +45,6 @@ class Fetch{
         reject({
           error:e,
           answer: this.xhr
-
         })
       })
     })
@@ -54,7 +52,6 @@ class Fetch{
 
   delete(url: string){
     this.xhr.open('DELETE', url)
-
     this.xhr.send()
     return new Promise((resolve: any, reject: any)=>{
       this.xhr.onload=()=>{
@@ -64,7 +61,6 @@ class Fetch{
         reject({
           error:e,
           answer: this.xhr
-
         })
       })
     })
@@ -72,7 +68,6 @@ class Fetch{
 
   put(url: string){
     this.xhr.open('PUT', url)
-
     this.xhr.send()
     return new Promise((resolve: any, reject: any)=>{
       this.xhr.onload=()=>{
@@ -86,9 +81,7 @@ class Fetch{
         })
       })
     })
-
   }
-
 }
 
 export default Fetch

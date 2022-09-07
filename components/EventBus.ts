@@ -3,15 +3,14 @@ type Listeners={
 }
 
 class EventBus {
-
   listeners: Listeners={}
-
 
   on(event: string, callback: Function):void{
     if (!this.listeners[event]){
       this.listeners[event]=[]
     } this.listeners[event].push(callback)
   }
+
   off(event:never, callback: Function): void{
     if (!this.listeners[event]) throw  new Error('Нет такого правила')
     this.listeners[event].filter((listner: never)=>{
