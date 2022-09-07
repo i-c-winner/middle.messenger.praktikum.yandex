@@ -18,6 +18,8 @@ module.exports = {
     "@typescript-eslint"
   ],
   "rules": {
+    "no-multiple-empty-lines": ["error", {"max":2}],
+    "eol-last": ["error", "always"],
     "indent": ['error', 2],
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/ban-types": "off",

@@ -4,7 +4,7 @@ import CreaterTemplates from "../components/modal/CreaterTemplates";
 import {html} from 'lit'
 import tmpl_button from "../tamplates/tmpl_button";
 
-const createrTemplates=new CreaterTemplates({})
+const createrTemplates=new CreaterTemplates()
 function MediatorModal(){
   this.init=function(){
     this.modal=new Modal ({
