@@ -1,15 +1,20 @@
 import EventBus from "./EventBus";
 import {render, TemplateResult} from "lit";
 
-
+type Events ={
+  INIT: string,
+  MOUNT: string,
+  RENDER: string,
+  UPDATE: string
+}
 class AbstractComponent <Props extends {  tagName: string,
   classes: [...string[]],
   id: string,
-  parentId: string,
-  name: string,}>{
+  parentId: string
+}>{
   private element: HTMLElement
   init: Function
-  private static EVENTS = {
+  private static EVENTS: Events = {
     INIT: 'component-init',
     MOUNT: 'component-did-mount',
     RENDER: 'component-did-render',
@@ -37,13 +42,13 @@ class AbstractComponent <Props extends {  tagName: string,
     this.eventBus.emit(AbstractComponent.EVENTS.RENDER)
   }
 
-  dispatchComponentDidMount(template: TemplateResult<1> | undefined){
+  dispatchComponentDidMount(template: never){
     this.eventBus.emit(AbstractComponent.EVENTS.MOUNT, template)
   }
   _componentDidMount(template: TemplateResult<1> | undefined){
     render(template, this.element)
   }
-  dispatchComponentDidUpdate(template: TemplateResult<1> | undefined){
+  dispatchComponentDidUpdate(template: never){
     this.eventBus.emit(AbstractComponent.EVENTS.UPDATE, template)
   }
 

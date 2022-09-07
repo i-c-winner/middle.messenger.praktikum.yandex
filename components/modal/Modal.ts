@@ -4,6 +4,7 @@ type ModalProps = {
   classes: [...string[]],
   id: string,
   parentId: string,
+  name: string
 }
 
 class Modal extends AbstractComponent<ModalProps> {
