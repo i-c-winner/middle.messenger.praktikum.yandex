@@ -52,7 +52,7 @@ ${tmpl_img({path: imageMenu, click: clickHeaderButton, class: 'header__button'})
   }
 }
 
-function createrMessagesBody(page){
+function createrMessagesBody(page: HTMLElement|null){
   document.body.addEventListener('keydown',(event)=>{
     if (event.key==='Escape'){
       const element=document.querySelector('.small-modal')
@@ -88,8 +88,8 @@ function createrMessagesBody(page){
     messages.appendChild(cardChats)
 
   })
-  page.appendChild(messages)
-  function setClasses(container, type) {
+  if (page!==null )page.appendChild(messages)
+  function setClasses(container: HTMLElement, type: string) {
     container.classList.add('message')
     if (type==='inner') {
       container.classList.add('message_inner')
@@ -100,7 +100,7 @@ function createrMessagesBody(page){
   }
 }
 
-function createFooter(page) {
+function createFooter(page: HTMLElement|null) {
   const footer=document.createElement('div')
   footer.classList.add('footer')
   footer.id='footer'
@@ -119,7 +119,7 @@ function createFooter(page) {
   })}
     `
   render(element, footer)
-  page.appendChild(footer)
+  if (page!==null) page.appendChild(footer)
 
   function footerGoLink() {
     const smallModal= new SmallModal()
@@ -132,9 +132,11 @@ function createFooter(page) {
 
   function sendMessage(){
     if (validator.oneValidator('message')){
-      const element:HTMLInputElement=document.querySelector('.footer__input')
-      console.info('Сообщение: ', element.value, ' было отправленно')
-      element.value=''
+      const element:HTMLInputElement|null=document.querySelector('.footer__input')
+      if (element!==null) {
+        console.info('Сообщение: ', element.value, ' было отправленно')
+        element.value=''
+      }
     }
   }
 }
