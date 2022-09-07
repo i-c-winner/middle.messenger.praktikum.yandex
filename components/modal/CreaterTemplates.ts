@@ -1,6 +1,5 @@
 import {html} from "lit";
 import tmpl_input from "../../tamplates/tmpl_input";
-import tmpl_button from "../../tamplates/tmpl_button";
 import tmpl_text from "../../tamplates/tmpl_text";
 import Validator from "../../utils/Validator";
 
@@ -9,7 +8,7 @@ class CreaterTemplates{
   private inputsName: [...string[]];
 
   private validator: any;
-  constructor(props) {
+  constructor() {
 
     this.validator=new Validator()
   }

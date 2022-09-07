@@ -3,22 +3,24 @@ import {render} from "lit";
 import {SMALLMODALID} from '../../static/constants'
 
 class SmallModal {
-  private id: string;
-
-  create(props){
+  id: string
+  create(props: {
+    type: string,
+    classes: [...string[]],
+    parentId: string
+  }){
     const modal=document.createElement('div')
     const template=this._getTemplate.bind(modal)(props.type)
     props.classes.map(classitem=>{
       modal.classList.add(classitem)
     })
     render(template, modal)
-    const container=document.getElementById(props.parentId)
-    container.appendChild(modal)
+    const container: HTMLElement|null=document.getElementById(props.parentId)
+    if (container!==null) container.appendChild(modal)
   }
 
-  _getTemplate(type){
+  _getTemplate(type: string){
     if (type===SMALLMODALID.HEADER_BUTTON){
-      console.log(this)
       this.id=SMALLMODALID.HEADER_BUTTON
       return createTemplate(SMALLMODALID.HEADER_BUTTON)
     }
