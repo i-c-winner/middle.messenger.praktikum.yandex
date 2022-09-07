@@ -26,20 +26,6 @@ const templates={
           error: 'От 8 до 40 символов, есть заглавная и цифра',
         }
       ],
-    buttons: [
-      {
-        text: "Авторизоваться",
-        clickType: 'changePage',
-        target: 'main',
-        id: 'login_button'
-      },
-      {
-        text: "Нет аккаунта",
-        clickType: "changeModal",
-        target: 'registration',
-        id: 'registration_button'
-      }
-    ],
   },
   registration: {
     texts:[{
@@ -98,20 +84,6 @@ const templates={
       },
 
     ],
-    buttons: [
-      {
-        text: "Зарегестрироваться",
-        clickType: 'changePage',
-        target: '#',
-        id: 'registration_button'
-      },
-      {
-        text: "Войти",
-        clickType: "changePage",
-        target: 'main',
-        id: 'login_button'
-      }
-    ]
   },
   headerButton: {
     items:[{
@@ -123,7 +95,6 @@ const templates={
       imgPath: minusIcon
     }],
     inputs: [],
-    buttons: []
   },
   footerButton: {
     items: [
@@ -139,7 +110,8 @@ const templates={
         text: "Локация",
         imgPath: locationIcon,
       }
-    ]
+    ],
+    unputs:[]
 
   }
 

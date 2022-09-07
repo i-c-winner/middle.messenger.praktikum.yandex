@@ -22,8 +22,8 @@ function MediatorModal(){
     createrTemplates.createInputsListeners()
   }
   this._getTemplate=function (type: keyof typeof templates){
-    const source=templates[type]
-
+    const source: any=templates[type]
+    console.log(source, 'sdsfsdf')
     return html`
       ${ createrTemplates.createTemplate(source)}
       <div class="form__buttons">
@@ -66,10 +66,7 @@ function MediatorModal(){
       inputFields.map(name=> {
         console.info(name, ':', form[name].value)
       })
-
-
     }
-
   }
 }
 
