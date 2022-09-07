@@ -1,11 +1,10 @@
 import EventBus from "./EventBus";
-import {Props} from "../utils/types";
 import {render, TemplateResult} from "lit";
 
 
-class AbstractComponent {
-  props: Props
+class AbstractComponent <Props extends {}>{
   private element: HTMLElement
+  protected props: Props
   init: Function
   private static EVENTS = {
     INIT: 'component-init',

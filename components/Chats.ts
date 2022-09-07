@@ -2,9 +2,15 @@ import AbstractComponent from "./AbstractComponent";
 import Chat from "./Chat";
 import constants from '../components/constants.js'
 
-class Chats extends AbstractComponent{
-  private chat: Chat;
-  constructor(props) {
+
+type ChatsProps={
+  tagName: string,
+  classes: [...string[]],
+  id: string,
+  parentId: string,
+}
+class Chats extends AbstractComponent<ChatsProps>{
+  constructor(props: ChatsProps) {
     super(props);
   }
 

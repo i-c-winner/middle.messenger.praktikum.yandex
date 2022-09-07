@@ -1,9 +1,18 @@
 import AbstractComponent from "./AbstractComponent";
 import {html} from "lit";
 
-class Chat extends AbstractComponent{
+type ChatProps= {
+  tagName: string,
+  classes: [...string[]],
+  id: string,
+  parentId: string,
+  name: string,
+  message: string,
+  counter: number
+}
+class Chat extends AbstractComponent <ChatProps>{
 
-  constructor(props) {
+  constructor(props: ChatProps) {
     super(props);
     this.props=props
   }
