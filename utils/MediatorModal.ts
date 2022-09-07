@@ -5,8 +5,9 @@ import {html} from 'lit'
 import tmpl_button from "../tamplates/tmpl_button";
 
 const createrTemplates=new CreaterTemplates()
-function MediatorModal(){
-  this.init=function(){
+class MediatorModal {
+  private modal: Modal;
+  init(){
     this.modal=new Modal ({
       tagName: 'form',
       id: 'form',
@@ -16,12 +17,14 @@ function MediatorModal(){
     this.dispatch('loginIn')
   }
 
-  this.dispatch=function(templateName: string){
-    const template=this._getTemplate(templateName)
+  dispatch(templateName: any){
+    const template=this._getTemplate(templateName) as any
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     this.modal.dispatchComponentDidMount(template)
     createrTemplates.createInputsListeners()
   }
-  this._getTemplate=function (type: keyof typeof templates){
+  _getTemplate=function (type: keyof typeof templates){
     const source: any=templates[type]
     console.log(source, 'sdsfsdf')
     return html`
@@ -43,22 +46,24 @@ function MediatorModal(){
     `
   }
 
-  this.update=(name: string)=>{
+  update(name: any){
     const template=this._getTemplate(name)
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     this.modal.dispatchComponentDidUpdate(template)
     createrTemplates.createInputsListeners()
   }
-  this.clickRegistration=function (event: Event){
+  clickRegistration=function (event: Event){
     event.preventDefault()
     this.update('registration')
   }
 
-  this.clickLogin=function (event: Event){
+  clickLogin=function (event: Event){
     event.preventDefault()
     if (createrTemplates.validationAll()) window.location.href='/pages/main.html'
   }
 
-  this.registration=function(event: Event){
+  registration=function(event: Event){
     event.preventDefault()
     if (createrTemplates.validationAll()) {
       const inputFields=createrTemplates.getInputsName()

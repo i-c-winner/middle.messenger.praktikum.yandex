@@ -1,12 +1,10 @@
 import AbstractComponent from "../AbstractComponent";
-type ModalProps = {
+type ModalProps= {
   tagName: string,
   classes: [...string[]],
   id: string,
   parentId: string,
-  name: string
 }
-
 class Modal extends AbstractComponent<ModalProps> {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
