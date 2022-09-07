@@ -5,7 +5,7 @@ import templates from "../modal/dataBasa";
 import tmpl_text from "../../tamplates/tmpl_text";
 
 
-function createTemplate(id){
+function createTemplate(id: string){
   const itemsHeaderButton:[
     ...{
       text: string,

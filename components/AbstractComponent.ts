@@ -2,9 +2,12 @@ import EventBus from "./EventBus";
 import {render, TemplateResult} from "lit";
 
 
-class AbstractComponent <Props extends {}>{
+class AbstractComponent <Props extends {  tagName: string,
+  classes: [...string[]],
+  id: string,
+  parentId: string,
+  name: string,}>{
   private element: HTMLElement
-  protected props: Props
   init: Function
   private static EVENTS = {
     INIT: 'component-init',
@@ -13,6 +16,7 @@ class AbstractComponent <Props extends {}>{
     UPDATE: 'component-did-update',
   }
   private eventBus: EventBus;
+  protected props: Props;
 
   constructor(props: Props) {
     this.eventBus = new EventBus()
@@ -50,7 +54,7 @@ class AbstractComponent <Props extends {}>{
   changeClasses(classesForDelete:[...string[]], classesForAdd:[...string[]]) {
     if (classesForDelete.length!==0){
       classesForDelete.map(element=>{
-        this.props.classes= this.props.classes.filter(elem=>elem!==element)
+        this.props.classes = this.props.classes.filter(elem=>elem!==element)
       })
     }
     if (classesForAdd.length!==0) {
