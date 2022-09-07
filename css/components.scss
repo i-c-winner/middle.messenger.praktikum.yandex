@@ -77,6 +77,18 @@
         display: none;
       }
     }
+
+    &__error-border {
+      border: 1px solid blue;
+
+      &_enable {
+        display: block;
+      }
+
+      &_disable {
+        display: none;
+      }
+    }
   }
 }
 

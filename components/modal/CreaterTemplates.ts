@@ -3,16 +3,31 @@ import tmpl_input from "../../tamplates/tmpl_input";
 import tmpl_text from "../../tamplates/tmpl_text";
 import Validator from "../../utils/Validator";
 
+interface Source {
+  texts:[
+    ...{
+    text: string,
+    classWrapper: string
+    }[]
+  ],
+  inputs: [
+      ...{
+    placeholder: string,
+        type: string,
+        name: string,
+        class: string,
+        error: string
+      } []
+  ]
+}
 const validator=new Validator()
 class CreaterTemplates{
   private inputsName: [...string[]];
-
   private validator: any;
   constructor() {
-
     this.validator=new Validator()
   }
-  createTemplate(source){
+  createTemplate(source: Source){
     this.inputsName=[]
     return html`
       ${source.texts.map(text=>{
@@ -41,34 +56,40 @@ class CreaterTemplates{
   })}    
         `
   }
-  stopReset(event){
-    event.preventDefault()
-  }
 
   createInputsListeners(){
     const form:HTMLFormElement=document.forms[0]
     this.inputsName.map((name:string)=>{
-      const error=document.getElementById(`${name}_error`)
+
+      const error = document.getElementById(`${name}_error`) as HTMLElement
       this.clearInputField({
         form,
         name,
         error
       })
-      form[name].addEventListener('focus', ((event)=>{
+      form[name].addEventListener('focus', ((event: FocusEvent)=>{
         if (validator.oneValidator(name)) {
           this.toogleOn(error)
         } else {
           this.toogleOff(error)
         }
-        event.target.parentNode.style="border: 1px solid blue"
+        const target = event.target as HTMLInputElement|null
+        if (target!==null) {
+          const element= target.parentElement as HTMLDivElement
+          element.classList.add('error-border_enable')
+        }
       }))
-      form[name].addEventListener('blur', (event)=>{
+      form[name].addEventListener('blur', (event: Event)=>{
         if (validator.oneValidator(name)) {
           this.toogleOn(error)
         } else {
           this.toogleOff(error)
         }
-        event.target.parentNode.style='none'
+        const target = event.target as HTMLInputElement|null
+        if (target!==null) {
+          const element= target.parentElement as HTMLDivElement
+          element.classList.add('error-border_disable')
+        }
       })
       form[name].addEventListener('input', ()=>{
         if (validator.oneValidator(name)) {
@@ -86,18 +107,32 @@ class CreaterTemplates{
   validationAll(){
     return  this.validator.validationAll(this.inputsName)
   }
-  clearInputField(params){
-    params.form[params.name].value=''
-    this.toogleOn(params.error)
+  clearInputField(params: {
+    form: HTMLFormElement,
+    name: string,
+    error: HTMLElement
+  }){
+    if (params.form!==null){
+      params.form[params.name].value=''
+      this.toogleOn(params.error)
+    }
+
   }
-  toogleOn(error){
-    error.parentNode.classList.add('form__error_enable')
-    error.parentNode.classList.remove('form__error_disable')
+  toogleOn(error:HTMLElement){
+    const target: HTMLElement|null= error.parentElement
+    if (target!==null) {
+      target.classList.add('form__error_enable')
+      target.classList.remove('form__error_disable')
+    }
+
   }
   
-  toogleOff(error){
-    error.parentNode.classList.remove('form__error_enable')
-    error.parentNode.classList.add('form__error_disable')
+  toogleOff(error:HTMLElement){
+    const target: HTMLElement|null= error.parentElement
+    if (target!==null) {
+      target.classList.add('form__error_disable')
+      target.classList.remove('form__error_enable')
+    }
   }
 }
 
