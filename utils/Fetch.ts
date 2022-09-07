@@ -1,39 +1,51 @@
 class Fetch{
+  private xhr: XMLHttpRequest;
+
+  request (props:{
+    url: string,
+    method: string,
+    body?: JSON,
+    headers?: any,
+    timeout?: number
+  }){
+    this.xhr=new XMLHttpRequest()
+    this.get(props.url)
+    this.post(props.url, props.body)
+    this.delete(props.url)
+  }
 
   get(url: string){
-    const xhr=new XMLHttpRequest()
-    xhr.open('GET',url)
-    xhr.send()
+    this.xhr.open('GET',url)
+    this.xhr.send()
     return new Promise((resolve, reject) =>{
-      xhr.onload=()=>{
-        resolve(xhr)
+      this.xhr.onload=()=>{
+        resolve(this.xhr)
       }
-      xhr.onerror=(e=>{
+      this.xhr.onerror=(e=>{
         reject({
           error:e,
-          answer: xhr
+          answer: this.xhr
 
         })
       })
     })
   }
 
-  post (url: string, body: JSON) {
-    const xhr=new XMLHttpRequest()
-    xhr.open('POST', url)
+  post (url: string, body: JSON|undefined) {
+    this.xhr.open('POST', url)
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
 
-    xhr.send(body)
+    this.xhr.send(body)
     return new Promise((resolve: any, reject: any)=>{
-      xhr.onload=()=>{
-        resolve(xhr)
+      this.xhr.onload=()=>{
+        resolve(this.xhr)
       }
-      xhr.onerror=(e=>{
+      this.xhr.onerror=(e=>{
         reject({
           error:e,
-          answer: xhr
+          answer: this.xhr
 
         })
       })
@@ -41,18 +53,17 @@ class Fetch{
   }
 
   delete(url: string){
-    const xhr=new XMLHttpRequest()
-    xhr.open('DELETE', url)
+    this.xhr.open('DELETE', url)
 
-    xhr.send()
+    this.xhr.send()
     return new Promise((resolve: any, reject: any)=>{
-      xhr.onload=()=>{
-        resolve(xhr)
+      this.xhr.onload=()=>{
+        resolve(this.xhr)
       }
-      xhr.onerror=(e=>{
+      this.xhr.onerror=(e=>{
         reject({
           error:e,
-          answer: xhr
+          answer: this.xhr
 
         })
       })
@@ -60,18 +71,17 @@ class Fetch{
   }
 
   put(url: string){
-    const xhr=new XMLHttpRequest()
-    xhr.open('PUT', url)
+    this.xhr.open('PUT', url)
 
-    xhr.send()
+    this.xhr.send()
     return new Promise((resolve: any, reject: any)=>{
-      xhr.onload=()=>{
-        resolve(xhr)
+      this.xhr.onload=()=>{
+        resolve(this.xhr)
       }
-      xhr.onerror=((e: ProgressEvent)=>{
+      this.xhr.onerror=((e: ProgressEvent)=>{
         reject({
           error:e,
-          answer: xhr
+          answer: this.xhr
 
         })
       })

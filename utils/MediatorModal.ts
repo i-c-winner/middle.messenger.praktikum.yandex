@@ -16,12 +16,12 @@ function MediatorModal(){
     this.dispatch('loginIn')
   }
 
-  this.dispatch=function(templateName){
+  this.dispatch=function(templateName: string){
     const template=this._getTemplate(templateName)
     this.modal.dispatchComponentDidMount(template)
     createrTemplates.createInputsListeners()
   }
-  this._getTemplate=function (type){
+  this._getTemplate=function (type: string){
     const source=templates[type]
 
     return html`
