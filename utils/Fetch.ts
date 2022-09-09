@@ -1,86 +1,47 @@
+interface Headers {
+  [key:string]:string
+}
+interface Options {
+  method: string,
+  timeout?: number,
+  body?: JSON,
+  headers?: Headers
+}
 class Fetch{
-  private xhr: XMLHttpRequest;
-
-  request (props:{
-    url: string,
-    method: string,
-    body?: JSON,
-    headers?: any,
-    timeout?: number
-  }){
-    this.xhr=new XMLHttpRequest()
-    this.get(props.url)
-    this.post(props.url, props.body)
-    this.delete(props.url)
+  get(url: string, options: {}){
+    return this._request(url, {...options, method: 'GET'})
+  }
+  put(url: string, options: {}){
+    return this._request(url, {...options, method: 'PUT'})
+  }
+  delete(url: string, options: {}){
+    return this._request(url, {...options, method: 'DELETE'})
+  }
+  set(url: string, options: {}){
+    return this._request(url, {...options, method: 'SET'})
   }
 
-  get(url: string){
-    this.xhr.open('GET',url)
-    this.xhr.send()
-    return new Promise((resolve, reject) =>{
-      this.xhr.onload=()=>{
-        resolve(this.xhr)
-      }
-      this.xhr.onerror=(e=>{
-        reject({
-          error:e,
-          answer: this.xhr
-        })
-      })
+  private _request(url: string, options: Options) {
+    const xhr=new XMLHttpRequest()
+    xhr.open(options.method, url)
+    xhr.timeout=options.timeout=0
+    xhr.send(options.body=undefined)
+    const keys=Object.keys(options.headers={})
+    keys.map((key)=>{
+      if (options.headers!==undefined) xhr.setRequestHeader(key, options.headers[key])
     })
-  }
-
-  post (url: string, body: JSON|undefined) {
-    this.xhr.open('POST', url)
-
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-
-    this.xhr.send(body)
-    return new Promise((resolve: any, reject: any)=>{
-      this.xhr.onload=()=>{
-        resolve(this.xhr)
+    return new Promise((resolve, reject)=>{
+      xhr.onload=()=>{
+        resolve(xhr)
       }
-      this.xhr.onerror=(e=>{
-        reject({
-          error:e,
-          answer: this.xhr
-        })
-      })
-    })
-  }
-
-  delete(url: string){
-    this.xhr.open('DELETE', url)
-    this.xhr.send()
-    return new Promise((resolve: any, reject: any)=>{
-      this.xhr.onload=()=>{
-        resolve(this.xhr)
+      xhr.onerror=()=>{
+        reject(xhr)
       }
-      this.xhr.onerror=(e=>{
-        reject({
-          error:e,
-          answer: this.xhr
-        })
-      })
-    })
-  }
-
-  put(url: string){
-    this.xhr.open('PUT', url)
-    this.xhr.send()
-    return new Promise((resolve: any, reject: any)=>{
-      this.xhr.onload=()=>{
-        resolve(this.xhr)
+      xhr.ontimeout=()=>{
+        reject(xhr)
       }
-      this.xhr.onerror=((e: ProgressEvent)=>{
-        reject({
-          error:e,
-          answer: this.xhr
-
-        })
-      })
     })
+  
   }
 }
 

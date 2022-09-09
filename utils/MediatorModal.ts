@@ -26,7 +26,6 @@ class MediatorModal {
   }
   _getTemplate=function (type: keyof typeof templates){
     const source: any=templates[type]
-    console.log(source, 'sdsfsdf')
     return html`
       ${ createrTemplates.createTemplate(source)}
       <div class="form__buttons">
