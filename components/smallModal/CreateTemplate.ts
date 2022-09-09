@@ -9,13 +9,13 @@ function createTemplate(id: string){
   const itemsHeaderButton:[
     ...{
       text: string,
-      imgPath: any
+      imgPath: string
     }[]
   ]= templates.headerButton.items
   const itemsFooterButton:[
     ...{
       text: string,
-      imgPath: any
+      imgPath: string
     }[]
   ]= templates.footerButton.items
   switch (id) {

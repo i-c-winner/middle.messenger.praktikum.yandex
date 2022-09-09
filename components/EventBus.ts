@@ -18,7 +18,7 @@ class EventBus {
     })
   }
 
-  emit(event: string, ...args: any){
+  emit(event: string, ...args: []){
     if(!this.listeners[event]) throw new Error("Нет такого правила")
     this.listeners[event].map((listener: Function)=>{
 
