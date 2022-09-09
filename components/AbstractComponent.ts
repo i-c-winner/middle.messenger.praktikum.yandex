@@ -31,7 +31,7 @@ class AbstractComponent <Props extends {  tagName: string,
     this.eventBus.emit(AbstractComponent.EVENTS.INIT)
   }
 
-  _registerEvents() {
+  private _registerEvents() {
     this.eventBus.on(AbstractComponent.EVENTS.INIT, this._init.bind(this))
     this.eventBus.on(AbstractComponent.EVENTS.MOUNT, this._componentDidMount.bind(this))
     this.eventBus.on(AbstractComponent.EVENTS.RENDER, this._render.bind(this))
@@ -45,14 +45,14 @@ class AbstractComponent <Props extends {  tagName: string,
   dispatchComponentDidMount(template: never){
     this.eventBus.emit(AbstractComponent.EVENTS.MOUNT, template)
   }
-  _componentDidMount(template: TemplateResult<1> | undefined){
+  private _componentDidMount(template: TemplateResult<1> | undefined){
     render(template, this.element)
   }
   dispatchComponentDidUpdate(template: never){
     this.eventBus.emit(AbstractComponent.EVENTS.UPDATE, template)
   }
 
-  _componentDidUpdate(template: TemplateResult<1> | undefined){
+  private _componentDidUpdate(template: TemplateResult<1> | undefined){
     render(template, this.element)
   }
 
@@ -68,24 +68,24 @@ class AbstractComponent <Props extends {  tagName: string,
       })
     }
   }
-  _init() {
+  private _init() {
     this.element=document.createElement(this.props.tagName)
     this.eventBus.emit(AbstractComponent.EVENTS.RENDER)
   }
-  _seterProps(){
+  private _seterProps(){
     this._setClasses()
     this._setId()
   }
-  _setId(){
+  private _setId(){
     this.element.id=this.props.id
   }
-  _setClasses(){
+  private _setClasses(){
     this.props.classes.map(style=>{
       this.element.classList.add(style)
     })
   }
 
-  _render() {
+  private _render() {
     this._seterProps()
     const container=document.getElementById(this.props.parentId)
     if (container!==null) container.appendChild(this.element)

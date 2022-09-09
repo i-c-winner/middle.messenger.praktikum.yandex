@@ -19,7 +19,7 @@ class SmallModal {
     if (container!==null) container.appendChild(modal)
   }
 
-  _getTemplate(type: string){
+  private _getTemplate(type: string){
     if (type===SMALLMODALID.HEADER_BUTTON){
       this.id=SMALLMODALID.HEADER_BUTTON
       return createTemplate(SMALLMODALID.HEADER_BUTTON)
