@@ -1,5 +1,6 @@
-@import "index.scss";
+@import "normalize";
 @import "components";
-@import "registration";
-@import "settings";
-@import "error";
+
+#root-main {
+  display: flex;
+}

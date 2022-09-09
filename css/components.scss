@@ -1,153 +1,277 @@
-@mixin input{
-
+@mixin modal {
   background-color: white;
-  padding: 2px;
-  position: absolute;
-  top: -11px;
-  left: 30px;
-  padding-left: 10px;
-  padding-right: 10px;
-  color: gray;
+  margin: 0 auto;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px greenyellow;
 }
 
-.form{
-  width: 25%;
-  margin: 0 auto;
-  padding: 50px;
-  background-color: white;
-  box-shadow: 5px 5px 10px grey;
-  border-radius: 5px;
+#root-modal {
+  background-color: rgb(236 234 234 / 30%);
+  text-align: center;
+  padding-top: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-  &__title{
-    margin: 0 0 25px 0;
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
+  .form {
+    @include modal;
+
+    width: 350px;
+
+    &__input-wrapper {
+      position: relative;
+    }
+
+    &__input-box {
+      margin-top: 15px;
+      border-bottom: 1px solid grey;
+      padding: 2px 15px;
+    }
+
+    &__input-text {
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    &__buttons {
+      width: 100%;
+      display: flex;
+      flex-flow: column;
+    }
+
+    &__button {
+      margin-top: 10px;
+      background-color: none;
+
+      &_disable {
+        display: none;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &__title {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    &__error {
+      position: absolute;
+      left: 405px;
+      width: 405px;
+      color: red;
+      bottom: -15px;
+      text-align: left;
+
+      &_disable {
+        display: block;
+      }
+
+      &_enable {
+        display: none;
+      }
+    }
+
+    &__error-border {
+      border: 1px solid blue;
+
+      &_enable {
+        display: block;
+      }
+
+      &_disable {
+        display: none;
+      }
+    }
+  }
+}
+
+.main-chats-box {
+  background-color: #c5ccdb;
+  height: 100vh;
+  width: 20%;
+  display: flex;
+  flex-flow: column;
+
+  .main__profile {
+    margin: 10px 0;
   }
 
-  &__input{
-    position: relative;
-    padding: 10px 0;
-    border: 1px solid black;
-    margin-bottom: 25px;
+  .chat {
+    height: 100px;
+    display: flex;
+    margin: 20px 15px;
+    padding: 3px 7px;
+    border-radius: 10px;
+    background-color: beige;
+    box-shadow: 2px 2px 5px forestgreen;
 
-    &_email{
-     &::before{
-       @include input;
-       content: 'Почта';
-     }
-   }
-    &_login{
-      &::before{
-        @include input;
-        content: 'Логин';
-      }
-    }
+    &__message {
+      margin: 0 5px;
+      padding: 3px 7px;
+      overflow: hidden;
+      position: relative;
 
-    &_name{
-      &::before{
-        @include input;
-        content: 'Имя';
-      }
-    }
-    &_second-name{
-      &::before{
-        @include input;
-        content: 'Фамилия';
-      }
-    }
-    &_display-name{
-      &::before{
-        @include input;
-        content: 'Имя и фамилия';
-      }
-    }
-    &_phone{
-      &::before{
-        @include input;
-        content: 'Телефон';
-      }
-    }
-    &_password{
-      &::before{
-        @include input;
-        content: 'Пароль';
-      }
-    }
-    &_password-again{
-      &::before{
-        @include input;
-        content: 'Пароль (еще раз)';
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 40px;
+        background: linear-gradient(180deg, transparent, rgb(245 245 220) 50%);
       }
     }
   }
-  &__input-text{
-    margin-left: 10px;
-    background-color: white;
-    &:focus{
-      outline: 0;
-      outline-offset: 0;
+}
 
-    }
-  }
-  &__buttons{
-    margin-top: 25px;
+#main-message {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  position: relative;
+
+  .messages {
     display: flex;
     flex-flow: column;
-    align-content: center;
-    a{
-      text-decoration: none;
-      text-align: center;
-        }
-
+    padding: 25px;
   }
 
-
-    &__button{
-      border: none;
-      border-radius: 5px;
-      padding: 5px 0;
-      width: 50%;
-      margin: 0 auto;
-
-
-      &:last-child{
-        margin-top: 10px;
-
-      }
-      &_button{
-        background-color: #3369f3;
-        color: white;
-      }
-      &_link{
-        background: none;
-        color: #3369f3;
-        &_exit{
-          color: red
-        }
-      }
+  .main__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
   }
 }
 
-.image{
-  &_settings
-  {
-    width: 150px;
-    padding: 20px;
-    border-radius: 50%;
-  }}
+.header {
+  position: relative;
 
-.error{
-  &__text{
-    font-size: 50px;
-        &_number{
-      font-size: 150px;
-      font-weight: bold;
-          margin: 0;
+  &__modal {
+    position: absolute;
+    padding: 5px 10px;
+    background-color: #eae1e1;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px forestgreen;
+    right: 80px;
+    top: 20px;
+  }
+
+  &__button {
+    width: 30px;
+    height: 30px;
+
+    &:hover {
+      cursor: pointer;
     }
-       &_link{
-         text-decoration: none;
-         font-size: 25px;
-       }
+  }
+
+  &__image {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  &__text {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.small-modal {
+  @include modal;
+
+  .list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-flow: column;
+  }
+
+  &_header {
+    position: absolute;
+    top: 10px;
+    right: 150px;
+  }
+
+  &_footer {
+    position: absolute;
+    left: 50px;
+    bottom: 50px;
+  }
+
+  .modal-img {
+    margin: 5px 0;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  .modal-item {
+    display: flex;
+  }
+}
+
+.message {
+  @include modal;
+
+  &_outer {
+    align-self: flex-end;
+    background-color: antiquewhite;
+    box-shadow: -2px -2px 5px red;
+  }
+
+  max-width: 50%;
+  margin: 25px 5px;
+}
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: white;
+  padding: 15px 0;
+
+  &__attache {
+    margin: 0 auto;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__input {
+    flex-basis: 90%;
+    border: none;
+    padding-left: 10px;
+
+    &:focus {
+      outline: 0;
+      border: 1px solid blue;
+    }
+
+    &:blur {
+      border: none;
+    }
+  }
+
+  &__link {
+    margin: 0 auto;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

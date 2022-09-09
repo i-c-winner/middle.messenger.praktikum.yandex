@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "preserveConstEnums": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "lib": [
+      "dom",
+      "es5",
+      "es6",
+      "es2016.array.include",
+      "scripthost",
+      "es2015.proxy"
+    ]
+  },
+  "plugins": [
+    {
+       "name": "typescript-lit-html-plugin"
+    }
+  ],
+  "include": ["components", "pages"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+  }

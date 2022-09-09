@@ -1,5 +1,5 @@
 import {html} from "lit";
 
-const tmpl_image=(o)=>html`
-<img src="${o.path}" alt="${o.alt}" class="${o.class}"/>`
+const tmpl_image=(params)=>html`
+<img src="${params.path}" alt="${params.alt}" class="${params.class}" @click="${params.click}"/>`
 export default tmpl_image
