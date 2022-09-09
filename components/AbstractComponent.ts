@@ -106,11 +106,8 @@ class AbstractComponent <Props extends {
         const value: ProxyValue = target[prop];
         return  value;
       },
-      set(target:Props, prop: ProxyProp, value: ProxyValue){
-
+      set(target:Props, prop: ProxyProp, value){
         target[prop]=value
-
-
         eventBus.emit(EVENTS.RENDER)
         return true
       },
