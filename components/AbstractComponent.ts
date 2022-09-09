@@ -7,7 +7,10 @@ type Events ={
   RENDER: string,
   UPDATE: string
 }
-class AbstractComponent <Props extends {  tagName: string,
+type ProxyValue = string|[...string[]]
+type ProxyProp= 'tagName' | 'classes'| 'id' | 'parentId'
+class AbstractComponent <Props extends {
+  tagName: string,
   classes: [...string[]],
   id: string,
   parentId: string
@@ -48,7 +51,7 @@ class AbstractComponent <Props extends {  tagName: string,
   private _componentDidMount(template: TemplateResult<1> | undefined){
     render(template, this.element)
   }
-  dispatchComponentDidUpdate(template: never){
+  dispatchComponentDidUpdate(template: TemplateResult<1> ){
     this.eventBus.emit(AbstractComponent.EVENTS.UPDATE, template)
   }
 
@@ -96,19 +99,22 @@ class AbstractComponent <Props extends {  tagName: string,
     const eventBus=this.eventBus
     const EVENTS=AbstractComponent.EVENTS
     return new Proxy(this.props, {
-      get(target, prop: never){
+      get(target, prop: ProxyProp){
         if (!target[prop]){
           console.info('Попытка получить несуществующее свойство экземпляра')
         }
-        const value:any = target[prop];
-        return typeof value === "function" ? value.bind(target) : value;
+        const value: ProxyValue = target[prop];
+        return  value;
       },
-      set(target:Props, prop: never, value:never){
+      set(target:Props, prop: ProxyProp, value: ProxyValue){
+
         target[prop]=value
+
+
         eventBus.emit(EVENTS.RENDER)
         return true
       },
-      defineProperty(target: Props, prop: never): boolean {
+      defineProperty(target: Props, prop: ProxyProp): boolean {
         if (!target[prop]) {
           return false
         } delete target[prop]

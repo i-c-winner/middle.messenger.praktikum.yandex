@@ -11,9 +11,9 @@ class EventBus {
     } this.listeners[event].push(callback)
   }
 
-  off(event:never, callback: Function): void{
+  off(event: string, callback: Function): void{
     if (!this.listeners[event]) throw  new Error('Нет такого правила')
-    this.listeners[event].filter((listner: never)=>{
+    this.listeners[event].filter((listner: Function)=>{
       return listner!==callback
     })
   }

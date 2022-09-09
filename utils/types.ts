@@ -5,7 +5,7 @@ type Props={
     tagName:string,
     classes: [...string[]],
     text?: string,
-    icon?: never,
+    icon?: string,
     id: string,
     parentId:string,
 }
