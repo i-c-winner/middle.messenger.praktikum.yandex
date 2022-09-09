@@ -17,17 +17,14 @@ class Chat extends AbstractComponent <ChatProps>{
     this.props=props
   }
   dispatchComponentDidMount() {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const template: TemplateResult<1>  =html`
+    const template =html`
       <div class="chat__img-box">
         <div class="chat__img"></div>
         <div class="chat__name">${this.props.name}</div>
       </div>
       <div class="chat__message">${this.props.message}</div>
       <div class="chat__counter">${this.props.counter}</div>
-   
-    `
+       `
     super.dispatchComponentDidMount(template);
   }
 }

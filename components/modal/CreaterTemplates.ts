@@ -23,10 +23,8 @@ interface Source {
 const validator=new Validator()
 class CreaterTemplates{
   private inputsName: [...string[]];
-  private validator: any;
-  constructor() {
-    this.validator=new Validator()
-  }
+
+
   createTemplate(source: Source){
     this.inputsName=[]
     return html`
@@ -105,7 +103,7 @@ class CreaterTemplates{
     return this.inputsName
   }
   validationAll(){
-    return  this.validator.validationAll(this.inputsName)
+    return  validator.validationAll(this.inputsName)
   }
   clearInputField(params: {
     form: HTMLFormElement,

@@ -25,11 +25,11 @@ class Fetch{
     const xhr=new XMLHttpRequest()
     xhr.open(options.method, url)
     xhr.timeout=options.timeout=0
-    xhr.send(options.body=undefined)
     const keys=Object.keys(options.headers={})
     keys.map((key)=>{
       if (options.headers!==undefined) xhr.setRequestHeader(key, options.headers[key])
     })
+    xhr.send(options.body=undefined)
     return new Promise((resolve, reject)=>{
       xhr.onload=()=>{
         resolve(xhr)
@@ -41,7 +41,6 @@ class Fetch{
         reject(xhr)
       }
     })
-  
   }
 }
 
