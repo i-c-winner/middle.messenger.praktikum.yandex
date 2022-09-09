@@ -42,7 +42,7 @@ class AbstractComponent <Props extends {  tagName: string,
     this.eventBus.emit(AbstractComponent.EVENTS.RENDER)
   }
 
-  dispatchComponentDidMount(template: never){
+  dispatchComponentDidMount(template: TemplateResult<1>){
     this.eventBus.emit(AbstractComponent.EVENTS.MOUNT, template)
   }
   private _componentDidMount(template: TemplateResult<1> | undefined){

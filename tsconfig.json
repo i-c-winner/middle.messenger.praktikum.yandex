@@ -17,7 +17,11 @@
       "es2015.proxy"
     ]
   },
-
+  "plugins": [
+    {
+       "name": "typescript-lit-html-plugin"
+    }
+  ],
   "include": ["components", "pages"],
   "exclude": ["node_modules", "**/*.spec.ts"]
   }

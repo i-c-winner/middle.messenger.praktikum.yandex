@@ -4,6 +4,21 @@ import CreaterTemplates from "../components/modal/CreaterTemplates";
 import {html} from 'lit'
 import tmpl_button from "../tamplates/tmpl_button";
 
+interface Source {
+texts: [...{
+  text: string,
+  classWrapper: string
+}[]],
+  inputs: [...{
+    placeholder: string,
+    error: string,
+    type: string,
+    name: string,
+    class: string
+  }[]]
+}
+
+type TemplateName ='loginIn' | 'registration'
 const createrTemplates=new CreaterTemplates()
 class MediatorModal {
   private modal: Modal;
@@ -17,15 +32,14 @@ class MediatorModal {
     this.dispatch('loginIn')
   }
 
-  dispatch(templateName: any){
-    const template=this._getTemplate(templateName) as any
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+  dispatch(templateName: TemplateName){
+    const template =this._getTemplate(templateName)
+
     this.modal.dispatchComponentDidMount(template)
     createrTemplates.createInputsListeners()
   }
-  _getTemplate=function (type: keyof typeof templates){
-    const source: any=templates[type]
+  _getTemplate=function (type:TemplateName){
+    const  source =templates[type] as Source
     return html`
       ${ createrTemplates.createTemplate(source)}
       <div class="form__buttons">
@@ -45,7 +59,7 @@ class MediatorModal {
     `
   }
 
-  update(name: any){
+  update(name: TemplateName){
     const template=this._getTemplate(name)
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
