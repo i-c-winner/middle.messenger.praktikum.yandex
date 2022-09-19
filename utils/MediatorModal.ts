@@ -3,6 +3,7 @@ import templates from "../components/modal/dataBasa";
 import CreaterTemplates from "../components/modal/CreaterTemplates";
 import {html} from 'lit'
 import tmpl_button from "../tamplates/tmpl_button";
+import {router} from "../pages/modal";
 
 interface Source {
 texts: [...{
@@ -52,7 +53,7 @@ class MediatorModal {
         ${tmpl_button({
     id: 'registration',
     class: 'form__button',
-    click: type==='loginIn'?this.clickRegistration.bind(this): this.registration,
+    click: type==='loginIn'?this.clickRegistration.bind(this): this.registrationAction,
     text: type==='loginIn'? 'Нет акаунта?': 'Регистрация'
   })}
       </div>
@@ -61,14 +62,13 @@ class MediatorModal {
 
   update(name: TemplateName){
     const template=this._getTemplate(name)
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     this.modal.dispatchComponentDidUpdate(template)
     createrTemplates.createInputsListeners()
   }
   clickRegistration=function (event: Event){
     event.preventDefault()
     this.update('registration')
+    router.go('/pages/modal/registration.html')
   }
 
   clickLogin=function (event: Event){
@@ -76,7 +76,7 @@ class MediatorModal {
     if (createrTemplates.validationAll()) window.location.href='/pages/main.html'
   }
 
-  registration=function(event: Event){
+  registrationAction=function(event: Event){
     event.preventDefault()
     if (createrTemplates.validationAll()) {
       const inputFields=createrTemplates.getInputsName()
@@ -85,6 +85,8 @@ class MediatorModal {
         console.info(name, ':', form[name].value)
       })
     }
+
+
   }
 }
 
