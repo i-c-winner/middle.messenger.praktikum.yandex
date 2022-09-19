@@ -67,13 +67,13 @@ class MediatorModal {
   }
   clickRegistration=function (event: Event){
     event.preventDefault()
-    this.update('registration')
     router.go('/pages/modal/registration.html')
   }
 
   clickLogin=function (event: Event){
     event.preventDefault()
-    if (createrTemplates.validationAll()) window.location.href='/pages/main.html'
+    if (createrTemplates.validationAll())  router.go('/pages/main.html')
+
   }
 
   registrationAction=function(event: Event){

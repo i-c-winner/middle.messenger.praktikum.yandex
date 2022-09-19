@@ -30,9 +30,12 @@ export default class Route {
   }
 
   render() {
-    console.log(this._props)
-    console.log(this._blockClass)
+    if (this._props.typeBlock){
+      mediatorModal.update(this._props.type)
+    } else {
+      window.history.go(0)
+    }
     // this._block = new this._blockClass();
-    mediatorModal.update(this._props.type)
+
   }
 }

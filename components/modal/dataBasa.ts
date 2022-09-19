@@ -27,6 +27,22 @@ const templates={
         }
       ],
   },
+  settings: {
+    texts:[{
+      text: "Настройки",
+      classWrapper: 'form__title'
+    }],
+    inputs:
+        [
+          {
+            placeholder: "Имя",
+            type: 'text',
+            name: 'name',
+            class: "form__input-box",
+            error: 'Латинские, русские буквы, цифры _  первая буква заглавная',
+          },
+        ],
+  },
   registration: {
     texts:[{
       text: "Регистрация",
