@@ -30,12 +30,10 @@ class MediatorModal {
       classes: ['form'],
       parentId: "root-modal",
     })
-    this.dispatch('loginIn')
   }
 
   dispatch(templateName: TemplateName){
     const template =this._getTemplate(templateName)
-
     this.modal.dispatchComponentDidMount(template)
     createrTemplates.createInputsListeners()
   }
@@ -67,12 +65,12 @@ class MediatorModal {
   }
   clickRegistration=function (event: Event){
     event.preventDefault()
-    router.go('/pages/modal/registration.html')
+    router.go('/registration')
   }
 
   clickLogin=function (event: Event){
     event.preventDefault()
-    if (createrTemplates.validationAll())  router.go('/pages/main.html')
+    if (createrTemplates.validationAll())  router.go('/chats')
 
   }
 
@@ -85,8 +83,10 @@ class MediatorModal {
         console.info(name, ':', form[name].value)
       })
     }
-
-
+  }
+  hide() {
+    console.log(this.modal)
+    this.modal.remove()
   }
 }
 

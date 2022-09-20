@@ -10,12 +10,21 @@ type ChatsBoxProps={
 
 class ChatsBox extends AbstractComponent<ChatsBoxProps>{
   private chats: Chats;
+  private static _instance: any;
 
   constructor(props: ChatsBoxProps) {
+    if (ChatsBox._instance) {
+      return ChatsBox._instance
+    }
     super(props)
+    ChatsBox._instance=this
+  }
+  componentDidMount() {
+    this.dispatchComponentDidMount()
   }
 
   dispatchComponentDidMount() {
+    console.log('ddd')
     this.chats=new Chats({
       tagName: 'div',
       classes: ['chats'],

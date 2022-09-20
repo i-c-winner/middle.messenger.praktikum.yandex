@@ -19,5 +19,6 @@ class Modal extends AbstractComponent<ModalProps> {
     }
   }
 
+
 }
 export default Modal

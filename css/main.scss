@@ -4,3 +4,11 @@
 #root-main {
   display: flex;
 }
+
+.visible-no {
+  z-index: -1
+}
+
+.visible-yes {
+  z-index:1
+}

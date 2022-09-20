@@ -10,7 +10,7 @@ import SmallModal from '../components/smallModal/SmallModal';
 import chatsList from '../static/chatsList';
 import {SMALLMODALID} from '../static/constants';
 
-
+debugger
 const validator=new Validator()
 createChatsSection()
 function createChatsSection(){
@@ -21,7 +21,7 @@ function createChatsSection(){
     classes: ['chats_box']
   }
   )
-  chatsBox.dispatchComponentDidMount()
+
 }
 
 createMessageSection()
@@ -140,3 +140,5 @@ function createFooter(page: HTMLElement|null) {
     }
   }
 }
+
+export  {createMessageSection }

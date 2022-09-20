@@ -28,7 +28,6 @@ class Router {
       // @ts-ignore
       this._onRoute(event.currentTarget.location.pathname);
     };
-
     this._onRoute(window.location.pathname);
   }
 
@@ -37,10 +36,9 @@ class Router {
     if (!route) {
       return;
     }
-
-    // if (this._currentRoute) {
-    //   this._currentRoute.leave();
-    // }
+    if (this._currentRoute) {
+      this._currentRoute.leave();
+    }
 
     route.render(route, pathname);
   }

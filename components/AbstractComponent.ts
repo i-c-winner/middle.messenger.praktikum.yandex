@@ -15,7 +15,7 @@ class AbstractComponent <Props extends {
   id: string,
   parentId: string
 }>{
-  private element: HTMLElement
+  element: HTMLElement
   init: Function
   private static EVENTS: Events = {
     INIT: 'component-init',
@@ -93,7 +93,10 @@ class AbstractComponent <Props extends {
     const container=document.getElementById(this.props.parentId)
     if (container!==null) container.appendChild(this.element)
   }
+  remove(){
+    console.log(this.element)
 
+  }
 
   getProps(){
     const eventBus=this.eventBus
